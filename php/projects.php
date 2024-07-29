@@ -8,7 +8,7 @@ $projects = [
         'name' => 'Particle',
         'owner' => 'Zander Lewis',
         'description' => 'A programming language that compiles to PHP.',
-        'link' => $linkPersonal . 'particle'
+        'link' => $linkPersonal . 'php-particle'
     ],
     [
         'name' => 'Text',
