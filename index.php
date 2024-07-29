@@ -8,6 +8,7 @@ require 'php/projects.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zander Lewis</title>
+    <meta name="postaverse-web-verification" content="a1a238c28e20ceeb06fdd6c6b7fe14db">
     <!-- SEO -->
     <link rel="canonical" href="https://zanderlewis.dev" />
     <meta name="description" content="Software/AI developer. I make software and AI available to everyone and are easy to use. So easy anyone can use it whether you are a programmer or not." />
