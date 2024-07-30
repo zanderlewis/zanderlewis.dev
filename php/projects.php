@@ -12,13 +12,13 @@ $projects = [
     ],
     [
         'name' => 'Text',
-        'owner' => 'Kids Safe Internet (Zander Lewis)',
+        'owner' => 'Kid Safe Internet (Zander Lewis)',
         'description' => 'Profane classification.',
         'link' => $linkKSI . 'text'
     ],
     [
         'name' => 'Image',
-        'owner' => 'Kids Safe Internet (Zander Lewis)',
+        'owner' => 'Kid Safe Internet (Zander Lewis)',
         'description' => 'NSFW/SFW classification and censoring.',
         'link' => $linkKSI . 'image'
     ]
