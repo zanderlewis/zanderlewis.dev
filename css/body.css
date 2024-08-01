@@ -10,7 +10,6 @@ body {
     background-color: #000;
 }
 
-/* Rest of your CSS */
 @keyframes twinkle {
     0% {
         opacity: 0;
