@@ -63,6 +63,10 @@ require 'php/projects.php';
         <p>GitHub: <a href="https://github.com/zanderlewis" class="text-blue-500">zanderlewis</a></p>
     </div>
     <footer class="pb-10"></footer>
+    <audio autoplay loop>
+        <source src="children-of-the-sky.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 
 </html>
