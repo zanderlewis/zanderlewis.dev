@@ -63,10 +63,16 @@ require 'php/projects.php';
         <p>GitHub: <a href="https://github.com/zanderlewis" class="text-blue-500">zanderlewis</a></p>
     </div>
     <footer class="pb-10"></footer>
-    <audio autoplay loop controls>
+    <audio id="background-music" autoplay loop muted>
         <source src="children-of-the-sky.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('background-music').muted = false;
+        });
+    </script>
 </body>
 
 </html>
