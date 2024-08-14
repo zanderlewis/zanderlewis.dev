@@ -36,6 +36,12 @@ require 'php/projects.php';
             <a href="#contact" class="text-white">Contact</a>
         </nav>
     </div>
+    <audio id="background-music">
+    <source src="children-of-the-sky.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<button onclick="document.getElementById('background-music').play()">Play Music</button>
     <div class="stars" id="stars"></div>
     <div class="content text-white">
         <h1 class="text-7xl pb-1 mask-1">Zander Lewis</h1>
@@ -63,21 +69,6 @@ require 'php/projects.php';
         <p>GitHub: <a href="https://github.com/zanderlewis" class="text-blue-500">zanderlewis</a></p>
     </div>
     <footer class="pb-10"></footer>
-    <audio id="background-music" loop>
-        <source src="children-of-the-sky.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var audio = document.getElementById('background-music');
-                audio.play().catch(function(error) {
-                    console.log('Autoplay was prevented:', error);
-                });
-            }, 3000); // Delay for 3 seconds
-        });
-    </script>
 </body>
 
 </html>
