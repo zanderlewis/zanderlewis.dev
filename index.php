@@ -63,14 +63,19 @@ require 'php/projects.php';
         <p>GitHub: <a href="https://github.com/zanderlewis" class="text-blue-500">zanderlewis</a></p>
     </div>
     <footer class="pb-10"></footer>
-    <audio id="background-music" autoplay loop muted>
+    <audio id="background-music" loop>
         <source src="children-of-the-sky.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     
     <script>
         window.addEventListener('load', function() {
-            document.getElementById('background-music').muted = false;
+            setTimeout(function() {
+                var audio = document.getElementById('background-music');
+                audio.play().catch(function(error) {
+                    console.log('Autoplay was prevented:', error);
+                });
+            }, 3000); // Delay for 3 seconds
         });
     </script>
 </body>
