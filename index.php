@@ -36,10 +36,6 @@ require 'php/projects.php';
             <a href="#contact" class="text-white">Contact</a>
         </nav>
     </div>
-    <audio id="background-music">
-    <source src="children-of-the-sky.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
 
 <button onclick="document.getElementById('background-music').play()">Play Music</button>
     <div class="stars" id="stars"></div>
