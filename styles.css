@@ -1,0 +1,48 @@
+#profile {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#profile img {
+    transition: transform 0.3s ease;
+}
+
+#profile img:hover {
+    transform: scale(1.05);
+}
+
+#profile h1 {
+    margin-top: 1rem;
+    color: #fff;
+}
+
+.bio-link {
+    text-decoration: underline;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
