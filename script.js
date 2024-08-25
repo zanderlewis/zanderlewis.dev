@@ -19,12 +19,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        // Load configuration
-        const config = await loadConfig();
-        const username = config.username;
-        const repoLimit = parseInt(config.repoLimit, 10);
-        const daysLimit = parseInt(config.daysLimit, 10);
-        const includeForks = config.includeForks === 'true';
+        const username = 'zanderlewis';
+        const repoLimit = 9;
+        const daysLimit = 31;
+        const includeForks = true;
 
         // Fetch user profile data
         let userResponse;
