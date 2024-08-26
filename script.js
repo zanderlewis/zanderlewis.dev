@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const profileBio = document.getElementById('profile-bio');
     const profileUsername = document.getElementById('profile-username');
 
+    const compiled = true;
+
     // Function to load and parse the configuration file
     async function loadConfig() {
         const response = await fetch('portfolio.cfg');
@@ -18,6 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         return config;
     }
 
+    // Do not run the try block if compiled is true
+    if (compiled) return;
     try {
         const username = 'zanderlewis';
         const repoLimit = 9;
