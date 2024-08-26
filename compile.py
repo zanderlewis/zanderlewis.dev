@@ -31,8 +31,8 @@ def generate_static_html(config, profile, repos):
 
     # Convert URLs and mentions in bio to links
     bio = profile['bio'] or ''
-    bio = re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank">\1</a>', bio)
-    bio = re.sub(r'@([a-zA-Z0-9_]+)', r'<a href="https://github.com/\1" target="_blank">@\1</a>', bio)
+    bio = re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank" class="bio-link">\1</a>', bio)
+    bio = re.sub(r'@([a-zA-Z0-9_]+)', r'<a href="https://github.com/\1" target="_blank" class="bio-link">@\1</a>', bio)
     html_content = html_content.replace('<!-- Bio will be inserted here -->', bio)
 
     # Update profile link
