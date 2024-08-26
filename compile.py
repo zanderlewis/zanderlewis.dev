@@ -16,8 +16,8 @@ def fetch_github_profile(username):
 def fetch_github_repos(username, repo_limit, include_forks):
     response = requests.get(f'https://api.github.com/users/{username}/repos')
     repos = response.json()
-    # Sort repositories by the most recently pushed
-    repos = sorted(repos, key=lambda repo: repo['pushed_at'], reverse=True)
+    # Sort repositories by the most recently updated
+    repos = sorted(repos, key=lambda repo: repo['updated_at'], reverse=True)
     return [repo for repo in repos if include_forks or not repo['fork']][:repo_limit]
 
 def generate_static_html(config, profile, repos):
