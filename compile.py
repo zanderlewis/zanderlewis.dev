@@ -1,5 +1,5 @@
 import requests
-import json
+import re
 
 def load_config():
     config = {}
@@ -16,6 +16,8 @@ def fetch_github_profile(username):
 def fetch_github_repos(username, repo_limit, include_forks):
     response = requests.get(f'https://api.github.com/users/{username}/repos')
     repos = response.json()
+    # Sort repositories by the most recently pushed
+    repos = sorted(repos, key=lambda repo: repo['pushed_at'], reverse=True)
     return [repo for repo in repos if include_forks or not repo['fork']][:repo_limit]
 
 def generate_static_html(config, profile, repos):
@@ -26,7 +28,12 @@ def generate_static_html(config, profile, repos):
     html_content = html_content.replace('src=""', f'src="{profile["avatar_url"]}"')
     html_content = html_content.replace('The Octocat', profile['name'])
     html_content = html_content.replace('[ octocat ]', f'[ {profile["login"]} ]')
-    html_content = html_content.replace('<!-- Bio will be inserted here -->', profile['bio'] or '')
+
+    # Convert URLs and mentions in bio to links
+    bio = profile['bio'] or ''
+    bio = re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank">\1</a>', bio)
+    bio = re.sub(r'@([a-zA-Z0-9_]+)', r'<a href="https://github.com/\1" target="_blank">@\1</a>', bio)
+    html_content = html_content.replace('<!-- Bio will be inserted here -->', bio)
 
     # Update profile link
     profile_link_html = f'<a href="{profile["html_url"]}" target="_blank" class="text-blue-400 hover:text-blue-300">View GitHub Profile</a>'
