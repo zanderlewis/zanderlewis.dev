@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Python script
-        run: python3 compile
+        run: python3 compile.py
 
       - name: Configure Git
         run: |
