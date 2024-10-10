@@ -19,6 +19,17 @@ const title = "Zander Lewis | " + Astro.props.title;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+		<meta charset="UTF-8">
+		<link rel="canonical" href="https://zanderlewis.dev" />
+		<meta name="description" content="Software/AI developer. I make software and AI available to everyone and are easy to use. So easy anyone can use it whether you are a programmer or not." />
+		<meta name="keywords" content="software, ai, developer, zander, lewis, zanderlewis, wolfthedev, wolf, the, dev" />
+		<meta name="author" content="Zander Lewis" />
+		<meta property="og:title" content="Zander Lewis" />
+		<meta property="og:description" content="Software/AI developer. I make software and AI available to everyone and are easy to use. So easy anyone can use it whether you are a programmer or not." />
+		<meta property="og:url" content="https://zanderlewis.dev" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Zander Lewis" />
+		<meta property="og:locale" content="en_US" />
 	</head>
 	<body>
 		<Header />
@@ -30,9 +41,9 @@ const title = "Zander Lewis | " + Astro.props.title;
 </html>
 <style is:global>
 	:root {
-		--accent: 64, 116, 220;
-		--accent-light: 108, 156, 255;
-		--accent-dark: 36, 82, 175;
+		--accent: 220, 20, 60; /* Deep red color in RGB */
+		--accent-dark: 139, 0, 0; /* Darker shade of deep red in RGB */
+		--accent-light: 255, 105, 97; /* Lighter shade of deep red in RGB */
 		--text-color: #e0e0e0;
 		--background-color: #121212;
 		--card-background: #1e1e1e;
@@ -74,7 +85,7 @@ const title = "Zander Lewis | " + Astro.props.title;
 	.btn {
 		display: inline-block;
 		background-color: rgb(var(--accent));
-		color: var(--text-color);
+		color: white;
 		padding: 0.5rem 1rem;
 		border-radius: 4px;
 		transition: all 0.3s ease;
@@ -83,7 +94,8 @@ const title = "Zander Lewis | " + Astro.props.title;
 		font-weight: bold;
 	}
 	.btn:hover {
-		background-color: rgb(var(--accent-light));
+		background-color: rgb(var(--accent-dark));
+		color: white;
 		transform: translateY(-2px);
 		box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 	}

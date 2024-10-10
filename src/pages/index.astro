@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import projects from '../data/projects.json';
 import posts from '../data/posts.json';
+import contacts from '../data/contacts.json';
 
 // Get the latest 4 projects and posts
 const latestProjects = projects.slice(0, 4);
@@ -9,25 +10,27 @@ const latestPosts = posts.slice(0, 4);
 ---
 <Layout title="Home">
     <br>
-    <section class="hero">
+    <section class="hero card">
         <div class="hero-image" style="background-image: url('/images/logo.jpeg');"></div>
         <h1>Zander Lewis</h1>
         <p>Software Developer</p>
     </section>
-    <section class="contact card">
+    <section class="contact-card card">
         <h2>Contact Me</h2>
         <p>Feel free to reach out to me if you have any questions or would like to work together on a project.</p>
         <ul>
-            <li>Email: <a href="mailto:zander@zanderlewis.dev">zander@zanderlewis.dev</a></li>
-            <li>GitHub: <a href="https://github.com/zanderlewis" target="_blank">zanderlewis</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/zanderlewis" target="_blank">zanderlewis</a></li>
+            {contacts.map((contact) => (
+                <li>
+                    <a href={contact.link} target="_blank">{contact.type}: {contact.value}</a>
+                </li>
+            ))}
         </ul>
     </section>
     <section class="featured-projects">
         <h2>Featured Projects</h2>
         <div class="project-grid">
             {latestProjects.map((project) => (
-                <div class="project-card">
+                <div class="project-card card">
                     <div class="project-image" style={`background-image: url(${project.image});`}></div>
                     <div class="project-content">
                         <h3>{project.title}</h3>
@@ -42,7 +45,7 @@ const latestPosts = posts.slice(0, 4);
         <h2>Latest Blog Posts</h2>
         <div class="post-grid">
             {latestPosts.map((post) => (
-                <div class="post-card">
+                <div class="post-card card">
                     <div class="post-image" style={`background-image: url(${post.image});`}></div>
                     <div class="post-content">
                         <h3>{post.title}</h3>
@@ -79,17 +82,17 @@ const latestPosts = posts.slice(0, 4);
         background-position: center;
         margin: 0 auto 2rem;
     }
-    .contact.card {
+    .card {
         background: var(--card-background);
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 10px rgba(var(--accent-dark), 0.8);
         padding: 1.5rem;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .contact.card:hover {
+    .card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        box-shadow: 0 6px 15px rgba(var(--accent-dark), 1);
     }
     .featured-projects, .latest-posts {
         margin-bottom: 4rem;
@@ -98,17 +101,6 @@ const latestPosts = posts.slice(0, 4);
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
-    }
-    .project-card, .post-card {
-        background: var(--card-background);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .project-card:hover, .post-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
     .project-image, .post-image {
         height: 200px;

@@ -1,8 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import resumeData from '../data/resume.json';
----
+import skills from '../data/skills.json';
 
+// Group skills by category
+const groupedSkills = skills.reduce((acc, skill) => {
+    const category = skill.category || 'Other';
+    if (!acc[category]) {
+        acc[category] = [];
+    }
+    acc[category].push(skill.name);
+    return acc;
+}, {});
+---
 <Layout title="Resume">
     <h1>Zander Lewis - Resume</h1>
     <section>
@@ -31,16 +41,18 @@ import resumeData from '../data/resume.json';
     </section>
     <section>
         <h2>Skills</h2>
-        <div class="card">
-            <ul class="skills">
-                {resumeData.skills.map((skill) => (
-                    <li>{skill}</li>
-                ))}
-            </ul>
-        </div>
+        {Object.keys(groupedSkills).map((category) => (
+            <div class="card">
+                <h3>{category}</h3>
+                <ul class="skills">
+                    {groupedSkills[category].map((skill) => (
+                        <li>{skill}</li>
+                    ))}
+                </ul>
+            </div>
+        ))}
     </section>
 </Layout>
-
 <style>
     section {
         margin-bottom: 2rem;

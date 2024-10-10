@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Rust",
+        "category": "Programming Languages"
+    },
+    {
+        "name": "PHP",
+        "category": "Programming Languages"
+    },
+    {
+        "name": "Laravel",
+        "category": "Frameworks"
+    },
+    {
+        "name": "Python",
+        "category": "Programming Languages"
+    },
+    {
+        "name": "VS-Code",
+        "category": "Tools"
+    },
+    {
+        "name": "GitHub",
+        "category": "Tools"
+    },
+    {
+        "name": "Cryptography",
+        "category": "Creations"
+    },
+    {
+        "name": "Programming Languages",
+        "category": "Creations"
+    }
+]
