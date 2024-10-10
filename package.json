@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "@zanderlewis/zanderlewis-dev",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -11,7 +11,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.2.0",
     "astro": "^4.15.3"
   }
 }

@@ -43,4 +43,4 @@ jobs:
           HOST: ${{ secrets.HOST }}
           DEPLOY_PATH: zanderlewis.dev/
         run: |
-          sshpass -p "$PASSWORD" rsync -avz --delete --exclude .git/ ./ $USERNAME@$HOST:$DEPLOY_PATH
+          sshpass -p "$PASSWORD" rsync -avz --delete --exclude .git/ --exclude node_modules/ ./ $USERNAME@$HOST:$DEPLOY_PATH
