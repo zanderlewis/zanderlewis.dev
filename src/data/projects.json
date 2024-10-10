@@ -1,0 +1,14 @@
+[
+    {
+      "title": "Postaverse",
+      "description": "A social media platform built with Laravel and Livewire.",
+      "image": "/images/projects/postaverse.jpeg",
+      "link": "https://postaverse.net"
+    },
+    {
+        "title": "LAQ-Fort",
+        "description": "Possibly the World's Strongest Encryption.",
+        "image": "/images/projects/laq-fort.jpeg",
+        "link": "https://github.com/zanderlewis/laq-fort"
+    }
+  ]

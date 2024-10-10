@@ -1,0 +1,28 @@
+{
+    "workExperience": [
+        {
+            "title": "Postaverse.net",
+            "role": "Co-founder and Developer",
+            "date": "January 2024 - Present",
+            "tasks": [
+                "Created the site in Python and Flask initially, then PHP and Laravel.",
+                "Moderating and adding new features"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "title": "CS50x (Online)",
+            "institution": "Harvard",
+            "date": "June 2023 - December 2023"
+        }
+    ],
+    "skills": [
+        "Rust",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Git",
+        "Github"
+    ]
+}

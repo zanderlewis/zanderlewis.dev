@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <a href="/">
+                <Image src="/images/logo.jpeg" alt="Logo" width={50} height={50} class="logo-image" />
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/resume">Resume</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<style>
+    header {
+        background-color: rgba(26, 26, 26, 0.8);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        width: 100%;
+    }
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: rgb(var(--accent-light));
+        text-shadow: 0 0 10px rgba(var(--accent-light), 0.5);
+    }
+    .logo-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
+    .logo-image:hover {
+        transform: scale(1.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        margin: 0;
+    }
+    nav li {
+        margin-left: 2rem;
+    }
+    nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: rgb(var(--accent-light));
+        transition: width 0.3s ease;
+    }
+    nav a:hover::after {
+        width: 100%;
+    }
+</style>

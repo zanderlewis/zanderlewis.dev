@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '2 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -14,6 +12,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '21'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the Astro site
+        run: npm run build
 
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
@@ -32,6 +41,6 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
           HOST: ${{ secrets.HOST }}
-          DEPLOY_PATH: zanderlewis.dev/ # Change this to your project path
+          DEPLOY_PATH: zanderlewis.dev/
         run: |
           sshpass -p "$PASSWORD" rsync -avz --delete --exclude .git/ ./ $USERNAME@$HOST:$DEPLOY_PATH

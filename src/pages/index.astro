@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import projects from '../data/projects.json';
+import posts from '../data/posts.json';
+
+// Get the latest 4 projects and posts
+const latestProjects = projects.slice(0, 4);
+const latestPosts = posts.slice(0, 4);
+---
+<Layout title="Home">
+    <br>
+    <section class="hero">
+        <div class="hero-image" style="background-image: url('/images/logo.jpeg');"></div>
+        <h1>Zander Lewis</h1>
+        <p>Software Developer</p>
+    </section>
+    <section class="featured-projects">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            {latestProjects.map((project) => (
+                <div class="project-card">
+                    <div class="project-image" style={`background-image: url(${project.image});`}></div>
+                    <div class="project-content">
+                        <h3>{project.title}</h3>
+                        <p>{project.description}</p>
+                        <a href={project.link} target="_blank" class="btn">Visit</a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </section>
+    <section class="latest-posts">
+        <h2>Latest Blog Posts</h2>
+        <div class="post-grid">
+            {latestPosts.map((post) => (
+                <div class="post-card">
+                    <div class="post-image" style={`background-image: url(${post.image});`}></div>
+                    <div class="post-content">
+                        <h3>{post.title}</h3>
+                        <p>{post.date}</p>
+                        <a href={`/blog/${post.id}`} class="btn">Read More</a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .hero {
+        text-align: center;
+        padding: 8rem 0 6rem;
+        background: linear-gradient(45deg, rgba(var(--accent-dark), 0.1), rgba(var(--accent), 0.1));
+        border-radius: 8px;
+        margin-bottom: 4rem;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .hero p {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+    }
+    .hero-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto 2rem;
+    }
+    .featured-projects, .latest-posts {
+        margin-bottom: 4rem;
+    }
+    .project-grid, .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    .project-card, .post-card {
+        background: var(--card-background);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover, .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    .project-image, .post-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+    }
+    .project-content, .post-content {
+        padding: 1.5rem;
+    }
+    .latest-posts ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .latest-posts li {
+        margin-bottom: 1rem;
+    }
+	.post-image {
+		background-color: white;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>

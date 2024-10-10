@@ -1,0 +1,90 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+}
+
+const title = "Zander Lewis | " + Astro.props.title;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Zander Lewis - Software Developer" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 64, 116, 220;
+		--accent-light: 108, 156, 255;
+		--accent-dark: 36, 82, 175;
+		--text-color: #e0e0e0;
+		--background-color: #121212;
+		--card-background: #1e1e1e;
+		--header-height: 60px;
+	}
+	html {
+		font-family: 'Roboto', sans-serif;
+		background: var(--background-color);
+		color: var(--text-color);
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	main {
+		flex: 1;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: calc(var(--header-height) + 2rem) 2rem 2rem; /* Added top padding */
+		box-sizing: border-box;
+	}
+	h1, h2, h3 {
+		font-family: 'Poppins', sans-serif;
+		color: rgb(var(--accent-light));
+	}
+	a {
+		color: rgb(var(--accent-light));
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+	a:hover {
+		color: rgb(var(--accent));
+	}
+	.btn {
+		display: inline-block;
+		background-color: rgb(var(--accent));
+		color: var(--text-color);
+		padding: 0.5rem 1rem;
+		border-radius: 4px;
+		transition: all 0.3s ease;
+		border: none;
+		cursor: pointer;
+		font-weight: bold;
+	}
+	.btn:hover {
+		background-color: rgb(var(--accent-light));
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+	}
+</style>
