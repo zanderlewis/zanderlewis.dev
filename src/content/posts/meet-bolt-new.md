@@ -10,4 +10,6 @@ bolt.new can spin up entire Astro websites. This website was made by bolt.new.
 
 Need a mobile app? bolt.new can generate mobile apps for you.
 
+---
+
 And much more!
