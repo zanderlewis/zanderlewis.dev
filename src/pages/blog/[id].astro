@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import posts from '../../data/posts.json';
+import fs from 'fs';
+import path from 'path';
+import { marked } from 'marked';
 
 export function getStaticPaths() {
   return posts.map((post) => ({
@@ -10,22 +13,23 @@ export function getStaticPaths() {
 
 const { id } = Astro.params;
 const post = posts.find((post) => post.id === id);
-
 if (!post) {
   throw new Error(`Post with id "${id}" not found`);
 }
----
 
+const contentPath = path.resolve(post.contentPath);
+const markdownContent = fs.readFileSync(contentPath, 'utf-8');
+const htmlContent = marked(markdownContent);
+---
 <Layout title={`${post.title}`}>
   <article class="blog-post">
     <img src={post.image} alt={post.title} class="post-image" />
     <h1>{post.title}</h1>
     <p class="date">{post.date}</p>
-    <div class="post-content" set:html={post.content} />
+    <div class="post-content" set:html={htmlContent} />
     <a href="/blog" class="back-link">&larr; Back to Blog</a>
   </article>
 </Layout>
-
 <style>
   .blog-post {
     max-width: 800px;

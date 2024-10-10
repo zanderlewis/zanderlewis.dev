@@ -2,8 +2,8 @@
     {
         "id": "1",
         "title": "Meet bolt.new",
-        "content": "<p>bolt.new is an ai agent for generating code. Here are some features</p><h2>1. Website Generation</h2><p>bolt.new can spin up entire Astro websites. This website was made by bolt.new.</p><h2>2. Mobile Apps</h2><p>Need a mobile app? bolt.new can generate mobile apps for you.</p>",
         "date": "2024-10-9",
-        "image": "/images/blogs/bolt.new.svg"
+        "image": "/images/blogs/bolt.new.svg",
+        "contentPath": "src/content/posts/meet-bolt-new.md"
     }
 ]
