@@ -10,5 +10,17 @@
         "description": "Possibly the World's Strongest Encryption.",
         "image": "/images/projects/laq-fort.jpeg",
         "link": "https://github.com/zanderlewis/laq-fort"
+    },
+    {
+      "title": "MLE-1",
+      "description": "An encryption algorithm for tricking hackers.",
+      "image": "/images/projects/laq-fort.jpeg",
+      "link": "https://github.com/zanderlewis/mle-1"
+    },
+    {
+      "title": "VibraDB",
+      "description": "A near real-time database written in Rust.",
+      "image": "/images/projects/laq-fort.jpeg",
+      "link": "https://github.com/zanderlewis/vibra"
     }
   ]
