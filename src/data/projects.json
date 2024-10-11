@@ -12,6 +12,12 @@
         "link": "https://github.com/zanderlewis/laq-fort"
     },
     {
+      "title": "Weather",
+      "description": "An experimental programming for weather applications.",
+      "image": "/images/projects/laq-fort.jpeg",
+      "link": "https://github.com/zanderlewis/weather"
+    },
+    {
       "title": "MLE-1",
       "description": "An encryption algorithm for tricking hackers.",
       "image": "/images/projects/laq-fort.jpeg",
