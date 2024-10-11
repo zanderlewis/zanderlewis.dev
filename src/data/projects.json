@@ -22,5 +22,11 @@
       "description": "A near real-time database written in Rust.",
       "image": "/images/projects/laq-fort.jpeg",
       "link": "https://github.com/zanderlewis/vibra"
+    },
+    {
+      "title": "Organize",
+      "description": "Organize your files lightning fast.",
+      "image": "/images/projects/organize.jpeg",
+      "link": "https://github.com/zanderlewis/organize"
     }
   ]
