@@ -9,11 +9,13 @@ const latestProjects = projects.slice(0, 4);
 const latestPosts = posts.slice(0, 4);
 ---
 <Layout title="Home">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ahoy.js/0.4.4/ahoy.min.js" onload="ahoy.start(); ahoy.track('page_view');"></script>
     <br>
     <section class="hero card">
         <div class="hero-image" style="background-image: url('/images/logo.jpeg');"></div>
         <h1>Zander Lewis</h1>
         <p>Software Developer</p>
+        <p id="visitor-count">Visitors: [ LOADING ]</p>
     </section>
     <section class="contact-card card">
         <h2>Contact Me</h2>
@@ -56,6 +58,29 @@ const latestPosts = posts.slice(0, 4);
             ))}
         </div>
     </section>
+    <script>
+        function isUniqueVisitor() {
+            if (!localStorage.getItem('visited')) {
+                localStorage.setItem('visited', 'true');
+                return true;
+            }
+            return false;
+        }
+
+        function getUniqueVisitorCount() {
+            let count = parseInt(localStorage.getItem('unique_visitor_count')) || 0;
+            if (isUniqueVisitor()) {
+                count += 1;
+                localStorage.setItem('unique_visitor_count', count.toString());
+            }
+            return count;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const uniqueVisitorCount = getUniqueVisitorCount();
+            document.getElementById('visitor-count').textContent = `Visitors: [ ${uniqueVisitorCount} ]`;
+        });
+    </script>
 </Layout>
 
 <style>

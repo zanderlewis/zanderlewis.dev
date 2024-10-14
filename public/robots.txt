@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zanderlewis.dev/sitemap-index.xml
