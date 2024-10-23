@@ -12,10 +12,10 @@
         "link": "https://github.com/zanderlewis/laq-fort"
     },
     {
-      "title": "Weather",
-      "description": "An experimental programming for weather applications.",
-      "image": "/images/projects/weather.jpeg",
-      "link": "https://github.com/zanderlewis/weather"
+      "title": "Q'",
+      "description": "Q' (Q Prime) is an experimental, high-precision programming language for quantum/weather calculations.",
+      "image": "/images/projects/qprime.jpeg",
+      "link": "https://github.com/zanderlewis/qprime"
     },
     {
       "title": "MLE-1",
