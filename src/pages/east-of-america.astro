@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="East Of America - GIMPS Team">
+  <section class="hero card">
+    <div class="hero-image" style="background-image: url('/images/east-of-america.jpeg');"></div>
+    <h1>East Of America</h1>
+    <p>Join our GIMPS Team and help find the next Mersenne prime!</p>
+  </section>
+  <section class="team-info card">
+    <h2>About Us</h2>
+    <p>We are a team of enthusiasts from the East Coast of the U.S. participating in the Great Internet Mersenne Prime Search (GIMPS). Our goal is to contribute to the discovery of new Mersenne primes, and the verification of Mersenne primes that have already been discovered.</p>
+  </section>
+  <section class="join-us card">
+    <h2>Join Us</h2>
+    <p>If you're interested in joining our team, please follow the instructions below:</p>
+    <ol>
+      <li>Visit the <a href="https://www.mersenne.org/" target="_blank">GIMPS website</a>.</li>
+      <li>Create an account or log in if you already have one.</li>
+      <li>Navigate to the "Team" section and search for "East Of America".</li>
+      <li>Click "Join" and start contributing!</li>
+    </ol>
+  </section>
+</Layout>
+<style>
+  .hero {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .hero-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1rem;
+  }
+  .team-info, .join-us {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  h1, h2 {
+    margin-bottom: 1rem;
+  }
+  p, ol {
+    margin-bottom: 1rem;
+  }
+</style>
