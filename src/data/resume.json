@@ -8,6 +8,14 @@
                 "Created the site in Python and Flask initially, then PHP and Laravel.",
                 "Moderating and adding new features"
             ]
+        },
+        {
+            "title": "GIMPS",
+            "role": "Volunteer",
+            "date": "October 2024 - Present",
+            "tasks": [
+                "Volunteering to the discovery of new Mersenne primes"
+            ]
         }
     ],
     "education": [
