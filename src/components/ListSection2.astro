@@ -1,0 +1,127 @@
+---
+export interface Project {
+    name: string;
+    link: string;
+    description: string;
+    technologies: string[];
+}
+
+export interface Achievement {
+    title: string;
+    description: string;
+    year: string;
+}
+
+export interface Education {
+    degree: string;
+    school: string;
+    year: string;
+    achievements: string[];
+}
+
+export type SectionType = "projects" | "achievements" | "education";
+
+interface Props {
+    sectionType: SectionType;
+    title: string;
+    iconPath: string;
+    data: Project[] | Achievement[] | Education;
+}
+
+const { sectionType, title, iconPath, data } = Astro.props;
+---
+
+<div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+    <h2 class="text-2xl font-semibold text-white mb-6 flex items-center">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 mr-2 text-purple-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+        >
+            <path d={iconPath}></path>
+        </svg>
+        {title}
+    </h2>
+
+    {
+        sectionType === "projects" && Array.isArray(data) && (
+            <div class="grid md:grid-cols-2 gap-6">
+                {(data as Project[]).map((project) => (
+                    <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="block"
+                    >
+                        <div class="bg-gray-700/30 p-6 rounded-lg hover:bg-gray-700/50 transition-colors border border-gray-600/50">
+                            <h3 class="text-xl font-semibold text-white mb-2">
+                                {project.name}
+                            </h3>
+                            <p class="text-gray-400 mb-4">
+                                {project.description}
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                {project.technologies.map((tech) => (
+                                    <span class="text-xs bg-gray-600/50 text-gray-300 px-2 py-1 rounded">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        )
+    }
+
+    {
+        sectionType === "achievements" &&
+            Array.isArray(data) &&
+            data.length > 0 && (
+                <div class="space-y-4">
+                    {(data as Achievement[]).map((ach) => (
+                        <div class="bg-gray-700/30 p-6 rounded-lg border border-gray-600/50">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-semibold text-white">
+                                    {ach.title}
+                                </h3>
+                                <span class="text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full text-sm">
+                                    {ach.year}
+                                </span>
+                            </div>
+                            <p class="text-gray-400">{ach.description}</p>
+                        </div>
+                    ))}
+                </div>
+            )
+    }
+
+    {
+        sectionType === "education" && !Array.isArray(data) && (
+            <div class="bg-gray-700/30 p-6 rounded-lg border border-gray-600/50">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-white">
+                            {(data as Education).degree}
+                        </h3>
+                        <p class="text-gray-400">
+                            {(data as Education).school}
+                        </p>
+                    </div>
+                    <span class="text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full text-sm">
+                        {(data as Education).year}
+                    </span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    {(data as Education).achievements.map((ach) => (
+                        <span class="bg-gray-600/50 text-gray-300 px-3 py-1 rounded-full text-sm">
+                            {ach}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        )
+    }
+</div>

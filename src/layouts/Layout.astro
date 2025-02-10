@@ -1,230 +1,72 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-interface Props {
-    title: string;
-}
-
-const title = "Zander Lewis | " + Astro.props.title;
+const { title = "Zander Lewis" } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content="Zander Lewis - Software Developer" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@600&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="canonical" href="https://zanderlewis.dev" />
-        <meta
-            name="description"
-            content="Software/AI developer. I make software and AI available to everyone and are easy to use. So easy anyone can use it whether you are a programmer or not."
-        />
-        <meta
-            name="keywords"
-            content="software, ai, developer, zander, lewis, zanderlewis, wolfthedev, wolf, the, dev"
-        />
-        <meta name="author" content="Zander Lewis" />
-        <meta property="og:title" content="Zander Lewis" />
-        <meta
-            property="og:description"
-            content="Software/AI developer. I make software and AI available to everyone and are easy to use. So easy anyone can use it whether you are a programmer or not."
-        />
-        <meta property="og:url" content="https://zanderlewis.dev" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Zander Lewis" />
-        <meta property="og:locale" content="en_US" />
-    </head>
-    <body>
-        <Header />
-        <main id="main">
-            <slot />
-        </main>
-        <Footer />
-        <canvas id="particleCanvas"></canvas>
-
-        <script>
-            // Get the canvas and its context
-            const canvas = document.getElementById('particleCanvas') as HTMLCanvasElement;
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const MAX_PARTICLES = 1000; // Maximum number of particles allowed
-            const PARTICLE_LIFETIME = 10000; // Lifetime of each particle in frames
-            let particles: Particle[] = [];
-
-            // Particle class
-            class Particle {
-                x: number;
-                y: number;
-                size: number;
-                speedX: number;
-                speedY: number;
-                color: string;
-                lifetime: number;
-
-                constructor(x: number, y: number) {
-                    this.x = x;
-                    this.y = y;
-                    this.size = Math.random() * 5 + 1; // Particle size
-                    this.speedX = (Math.random() - 0.5) * 4; // Increased speed X for more spread
-                    this.speedY = (Math.random() - 0.5) * 4; // Increased speed Y for more spread
-                    this.color = `rgb(255, 255, 255)`; // Particle color
-                    this.lifetime = 0; // Initialize lifetime
-                }
-
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    this.lifetime++; // Increment lifetime
-
-                    // Gradually reduce size to simulate fading away
-                    if (this.size > 0.2) this.size -= 0.1;
-                }
-
-                draw() {
-                    ctx.fillStyle = this.color; // Particle color
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
-                // Draw lines to other particles
-                drawConnections(particles: Particle[]) {
-                    for (const particle of particles) {
-                        const distance = Math.sqrt((this.x - particle.x) ** 3 + (this.y - particle.y) ** 3);
-                        if (distance < 150) { // Increased connection distance for better visibility with spread
-                            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)'; // Line color
-                            ctx.lineWidth = 1; // Line width
-                            ctx.beginPath();
-                            ctx.moveTo(this.x, this.y);
-                            ctx.lineTo(particle.x, particle.y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            function handleParticles(event: MouseEvent) {
-                const xPos = event.x;
-                const yPos = event.y;
-
-                // Create new particles on mouse movement
-                for (let i = 0; i < 5; i++) {
-                    particles.push(new Particle(xPos, yPos));
-                }
-
-                // Ensure the total number of particles does not exceed MAX_PARTICLES
-                if (particles.length > MAX_PARTICLES) {
-                    particles.splice(0, particles.length - MAX_PARTICLES);
-                }
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-
-                // Update and draw particles
-                particles.forEach((particle) => {
-                    particle.update();
-                    particle.draw();
-                    particle.drawConnections(particles); // Draw lines between particles
-                });
-
-                // Remove particles that are too small or have exceeded their lifetime
-                particles = particles.filter(p => p.size > 0.2 && p.lifetime < PARTICLE_LIFETIME);
-
-                requestAnimationFrame(animate); // Keep the animation going
-            }
-
-            // Event listener for mouse movement
-            document.addEventListener('mousemove', handleParticles);
-            animate(); // Start the animation
-
-            // Resize the canvas on window resize
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-        </script>
-    </body>
-    <style is:global>
-        :root {
-            --accent: 220, 20, 60; /* Deep red color in RGB */
-            --accent-dark: 139, 0, 0; /* Darker shade of deep red in RGB */
-            --accent-light: 255, 105, 97; /* Lighter shade of deep red in RGB */
-            --text-color: #e0e0e0;
-            --background-color: #121212;
-            --card-background: #1e1e1e;
-            --header-height: 60px;
-        }
-        html {
-            font-family: "Roboto", sans-serif;
-            background: var(--background-color);
-            color: var(--text-color);
-            scroll-behavior: smooth;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        main {
-            flex: 1;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: calc(var(--header-height) + 2rem) 2rem 2rem; /* Added top padding */
-            box-sizing: border-box;
-        }
-        h1,
-        h2,
-        h3 {
-            font-family: "Poppins", sans-serif;
-            color: rgb(var(--accent-light));
-        }
-        a {
-            color: rgb(var(--accent-light));
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: rgb(var(--accent));
-        }
-        .btn {
-            display: inline-block;
-            background-color: rgb(var(--accent));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn:hover {
-            background-color: rgb(var(--accent-dark));
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 99999;
-        }
-    </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="_bg"></div>
+    <slot />
+  </body>
 </html>
+
+<style is:global>
+  :root {
+    --accent: 139, 92, 246;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+  }
+  
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #111827;
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.2);
+  }
+
+  ._bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: none; /* Remove the old gradient */
+  }
+
+  /* Smaller slice in bottom-left */
+  ._bg::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: #181127; /* Adjust color as desired */
+    clip-path: polygon(0% 100%, 0% 0%, 100% 100%);
+  }
+
+  /* Larger slice in top-right */
+  ._bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background: #381828; /* Adjust color as desired */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+  }
+</style>
