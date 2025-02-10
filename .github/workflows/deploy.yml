@@ -23,6 +23,9 @@ jobs:
           rm -rf package-lock.json node_modules
           npm install
   
+      - name: Install astro globally
+        run: npm install -g astro
+  
       - name: Build project
         run: npm run build
 
