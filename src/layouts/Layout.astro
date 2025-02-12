@@ -1,4 +1,5 @@
 ---
+// filepath: /c:/Users/zapal/dev/zanderlewis.dev/src/layouts/Layout.astro
 const { title = "Zander Lewis" } = Astro.props;
 ---
 
@@ -13,8 +14,24 @@ const { title = "Zander Lewis" } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="_bg"></div>
+    <div class="_bg">
+      <div class="_bg-before"></div>
+      <div class="_bg-after"></div>
+    </div>
     <slot />
+    <script>
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const bgBefore = document.querySelector('._bg-before') as HTMLElement;
+        const bgAfter = document.querySelector('._bg-after') as HTMLElement;
+        if (bgBefore) {
+          bgBefore.style.transform = `translate(${scrollY * 0.2}px, ${-scrollY * 0.2}px) scaleY(${1 + scrollY * 0.001})`;
+        }
+        if (bgAfter) {
+          bgAfter.style.transform = `translate(${-scrollY * 0.2}px, ${scrollY * 0.2}px) scaleY(${1 + scrollY * 0.001})`;
+        }
+      });
+    </script>
   </body>
 </html>
 
@@ -47,26 +64,28 @@ const { title = "Zander Lewis" } = Astro.props;
   }
 
   /* Smaller slice in bottom-left */
-  ._bg::before {
-    content: "";
+  ._bg-before {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 200px;
-    height: 200px;
-    background: #181127; /* Adjust color as desired */
+    bottom: -50vh; /* Use viewport height */
+    left: -50vw; /* Use viewport width */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background: #181127;
     clip-path: polygon(0% 100%, 0% 0%, 100% 100%);
+    transition: transform 0.1s ease-out;
+    transform-origin: bottom left;
   }
 
   /* Larger slice in top-right */
-  ._bg::after {
-    content: "";
+  ._bg-after {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 400px;
-    height: 400px;
-    background: #381828; /* Adjust color as desired */
+    top: -50vh; /* Use viewport height */
+    right: -50vw; /* Use viewport width */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background: #381828;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+    transition: transform 0.1s ease-out;
+    transform-origin: top right;
   }
 </style>
