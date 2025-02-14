@@ -40,8 +40,14 @@
     {
       "name": "WildflowerOS",
       "description": "Wildflower operating system",
-      "technologies": ["Rust"],
+      "technologies": ["Rust", "Assembly"],
       "link": "https://github.com/wildflower-os/wildflower"
+    },
+    {
+      "name": "Yotta",
+      "description": "Pure no_std Rust arbitrary-precision integer library",
+      "technologies": ["Rust"],
+      "link": "https://github.com/zanderlewis/yotta"
     }
   ],
   "education": {
