@@ -1,5 +1,5 @@
 {
-  "name": "Zander",
+  "name": "Zander Lewis",
   "birthDate": "2008-09-14",
   "experienceSince": "2024-01-04",
   "title": "Software Developer",
@@ -20,6 +20,7 @@
   ],
   "learning": [
     "Fortran",
+    "x86_64 Assembly"
     "OS Development",
     "GPU Programming"
   ],
@@ -40,7 +41,7 @@
     {
       "name": "WildflowerOS",
       "description": "Wildflower operating system",
-      "technologies": ["Rust", "Assembly"],
+      "technologies": ["Rust", "x86_64 Assembly"],
       "link": "https://github.com/wildflower-os/wildflower"
     },
     {
