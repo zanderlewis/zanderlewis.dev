@@ -148,6 +148,14 @@ import portfolioData from "../data/portfolio.json";
           items={portfolioData.learning}
         />
 
+        <!-- Languages -->
+        <ListSection
+          title="Languages"
+          iconPath="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14.93V17h-2v-2.07a8.001 8.001 0 01-3.95-1.32l1.45-1.45a6.001 6.001 0 003.5 1.1c1.3 0 2.52-.42 3.5-1.1l1.45 1.45A8.001 8.001 0 0113 16.93zM12 4a8 8 0 00-7.75 6h15.5A8 8 0 0012 4zm-6.75 8a8 8 0 0015.5 0H5.25z"
+          color="green"
+          items={portfolioData.languages.map(language => `${language.name} (${language.level})`)}
+        />
+
         <!-- Wakatime Stats -->
         <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
           <h2 class="text-2xl font-semibold text-white mb-6 flex items-center">
