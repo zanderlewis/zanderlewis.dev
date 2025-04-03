@@ -3,7 +3,6 @@ import "../styles/tailwind.css";
 const { title = "Zander Lewis" } = Astro.props;
 ---
 
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,24 +10,22 @@ const { title = "Zander Lewis" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="_bg">
-      <div class="_bg-before"></div>
-      <div class="_bg-after"></div>
-    </div>
+    <div class="_bg"></div>
     <slot />
     <script>
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         const scrollY = window.scrollY;
-        const bgBefore = document.querySelector('._bg-before') as HTMLElement;
-        const bgAfter = document.querySelector('._bg-after') as HTMLElement;
-        if (bgBefore) {
-          bgBefore.style.transform = `translate(${scrollY * 0.2}px, ${-scrollY * 0.2}px) scaleY(${1 + scrollY * 0.001})`;
-        }
-        if (bgAfter) {
-          bgAfter.style.transform = `translate(${-scrollY * 0.2}px, ${scrollY * 0.2}px) scaleY(${1 + scrollY * 0.001})`;
+        const bg = document.querySelector("._bg");
+        if (bg) {
+          // Update the background position using modulo arithmetic for an infinite effect:
+          const offset = (scrollY * 0.05) % 200;
+          (bg as HTMLElement).style.backgroundPosition = `0 ${offset}px`;
         }
       });
     </script>
@@ -40,11 +37,16 @@ const { title = "Zander Lewis" } = Astro.props;
     --accent: 139, 92, 246;
     --accent-light: 224, 204, 250;
     --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
   }
-  
+
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     background: #111827;
     color-scheme: dark;
   }
@@ -60,32 +62,32 @@ const { title = "Zander Lewis" } = Astro.props;
     z-index: -1;
     width: 100%;
     height: 100%;
-    background: none; /* Remove the old gradient */
+    background-color: #0a0f1f;
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    );
+    background-size: 20px 20px;
+    background-repeat: repeat;
+    will-change: background-position;
   }
 
-  /* Smaller slice in bottom-left */
-  ._bg-before {
-    position: absolute;
-    bottom: -50vh; /* Use viewport height */
-    left: -50vw; /* Use viewport width */
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    background: #181127;
-    clip-path: polygon(0% 100%, 0% 0%, 100% 100%);
-    transition: transform 0.1s ease-out;
-    transform-origin: bottom left;
+  .glass {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background-clip: padding-box;
   }
 
-  /* Larger slice in top-right */
-  ._bg-after {
-    position: absolute;
-    top: -50vh; /* Use viewport height */
-    right: -50vw; /* Use viewport width */
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    background: #381828;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
-    transition: transform 0.1s ease-out;
-    transform-origin: top right;
+  .glass-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background-clip: padding-box;
   }
 </style>

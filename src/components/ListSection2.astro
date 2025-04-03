@@ -31,7 +31,7 @@ interface Props {
 const { sectionType, title, iconPath, data } = Astro.props;
 ---
 
-<div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+<div class="rounded-xl p-8 border border-gray-600/50">
     <h2 class="text-2xl font-semibold text-white mb-6 flex items-center">
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,11 +55,11 @@ const { sectionType, title, iconPath, data } = Astro.props;
                         rel="noopener noreferrer"
                         class="block"
                     >
-                        <div class="bg-gray-700/30 p-6 rounded-lg hover:bg-gray-700/50 transition-colors border border-gray-600/50">
+                        <div class="p-6 rounded-lg hover:bg-gray-700/50 transition-colors border border-gray-600/50">
                             <h3 class="text-xl font-semibold text-white mb-2">
                                 {project.name}
                             </h3>
-                            <p class="text-gray-400 mb-4">
+                            <p class="text-gray-300 mb-4">
                                 {project.description}
                             </p>
                             <div class="flex flex-wrap gap-2">
@@ -82,7 +82,7 @@ const { sectionType, title, iconPath, data } = Astro.props;
             data.length > 0 && (
                 <div class="space-y-4">
                     {(data as Achievement[]).map((ach) => (
-                        <div class="bg-gray-700/30 p-6 rounded-lg border border-gray-600/50">
+                        <div class="p-6 rounded-lg border border-gray-600/50">
                             <div class="flex justify-between items-start mb-2">
                                 <h3 class="text-xl font-semibold text-white">
                                     {ach.title}
@@ -91,7 +91,7 @@ const { sectionType, title, iconPath, data } = Astro.props;
                                     {ach.year}
                                 </span>
                             </div>
-                            <p class="text-gray-400">{ach.description}</p>
+                            <p class="text-gray-300">{ach.description}</p>
                         </div>
                     ))}
                 </div>
@@ -100,13 +100,13 @@ const { sectionType, title, iconPath, data } = Astro.props;
 
     {
         sectionType === "education" && !Array.isArray(data) && (
-            <div class="bg-gray-700/30 p-6 rounded-lg border border-gray-600/50">
+            <div class="p-6 rounded-lg border border-gray-600/50">
                 <div class="flex justify-between items-start mb-4">
                     <div>
                         <h3 class="text-xl font-semibold text-white">
                             {(data as Education).degree}
                         </h3>
-                        <p class="text-gray-400">
+                        <p class="text-gray-300">
                             {(data as Education).school}
                         </p>
                     </div>

@@ -9,11 +9,11 @@ export interface Props {
 const { title, iconPath, color, items } = Astro.props;
 ---
 
-<div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+<div class="rounded-xl p-8 border border-gray-500/30">
     <h2 class="text-2xl font-semibold text-white mb-6 flex items-center">
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 mr-2"
+            class="h-6 w-6 mr-2 text-purple-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -24,14 +24,11 @@ const { title, iconPath, color, items } = Astro.props;
     </h2>
     <div class="flex flex-wrap gap-3">
         {
-            items.map((item) => {
-                const itemClass = `px-4 py-2 rounded-lg border transition-colors bg-${color}-500/10 text-${color}-400 border-${color}-500/20 hover:bg-${color}-500/20`;
-                return (
-                    <span class={itemClass}>
-                        {item}
-                    </span>
-                );
-            })
+            items.map((item) => (
+                <span class="px-4 py-2 rounded-lg border border-gray-500/50 transition-colors text-gray-300 hover:bg-gray-700/30">
+                    {item}
+                </span>
+            ))
         }
     </div>
 </div>
