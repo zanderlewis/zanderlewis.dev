@@ -5,7 +5,7 @@
   "title": "Software Developer",
   "location": "Candler, NC",
   "image": "https://avatars.githubusercontent.com/u/158775116?v=4",
-  "bio": "Passionate about programming, Rust, encryption, and OS development.",
+  "bio": "Self-taught and passionate developer focused on Software Development, along with Web Development and OS Development.",
   "skills": [
     "Web Development",
     "OS Development",
@@ -33,14 +33,32 @@
   ],
   "projects": [
     {
+      "name": "AssemblyOS",
+      "description": "AssemblyOS is a simple operating system written in assembly language by AI",
+      "technologies": ["ChatGPT/Claude", "x86_64 Assembly"],
+      "link": "https://github.com/zanderlewis/assembly-os"
+    },
+    {
+      "name": "Linkverse",
+      "description": "A small and free link shortener that also generates QR codes",
+      "technologies": ["Laravel", "MySQL", "PHP"],
+      "link": "https://github.com/postaverse/linkverse.us"
+    },
+    {
       "name": "Postaverse",
-      "description": "Open source social media platform",
-      "technologies": ["MySQL", "Laravel", "PHP"],
+      "description": "Open source social media platform with a universe theme",
+      "technologies": ["Laravel", "MySQL", "PHP"],
       "link": "https://github.com/postaverse/postaverse"
     },
     {
+      "name": "Rusty Java",
+      "description": "A Rust-like file structure for Java - Removing the weird Java file structure",
+      "technologies": ["Gradle", "Rust"],
+      "link": "https://github.com/zanderlewis/rusty-java"
+    },
+    {
       "name": "WildflowerOS",
-      "description": "Wildflower operating system",
+      "description": "Fork of MOROS, a simple operating system written in Rust and x86_64 Assembly",
       "technologies": ["Rust", "x86_64 Assembly"],
       "link": "https://github.com/wildflower-os/wildflower"
     },
@@ -51,12 +69,20 @@
       "link": "https://github.com/zanderlewis/yotta"
     }
   ],
-  "education": {
-    "degree": "Completed",
-    "school": "CS50x",
-    "year": "2023",
-    "achievements": []
-  },
+  "education": [
+    {
+      "degree": "Completed",
+      "school": "CS50x",
+      "year": "2023",
+      "achievements": []
+    },
+    {
+      "degree": "Ongoing",
+      "school": "Homeschool",
+      "year": "2017-2025",
+      "achievements": []
+    }
+  ],
   "links": [
     {
       "name": "GitHub",

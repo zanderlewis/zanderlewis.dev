@@ -24,7 +24,7 @@ const { title, iconPath, color, items } = Astro.props;
     </h2>
     <div class="flex flex-wrap gap-3">
         {
-            items.map((item) => (
+            items.map((item: unknown) => (
                 <span class="px-4 py-2 rounded-lg border border-gray-500/50 transition-colors text-gray-300 hover:bg-gray-700/30">
                     {item}
                 </span>
