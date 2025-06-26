@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.0",
-    "astro": "^5.7.12"
+    "@astrojs/sitemap": "^3.4.1",
+    "astro": "^5.10.1"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.6",
-    "tailwindcss": "^4.1.6"
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11"
   },
   "name": "@zanderlewis/portfolio",
   "private": true,

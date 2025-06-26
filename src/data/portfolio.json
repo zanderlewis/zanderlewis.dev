@@ -5,24 +5,17 @@
   "title": "Software Developer",
   "location": "Candler, NC",
   "image": "https://avatars.githubusercontent.com/u/158775116?v=4",
-  "bio": "Self-taught and passionate developer focused on Software Development, along with Web Development and OS Development.",
+  "bio": "Developer with a passion for Red Teaming, Open Source, and Software Development.",
   "skills": [
     "Web Development",
-    "OS Development",
-    "Software Development",
-    "Rust Programming",
-    "PHP Programming"
+    "Software Development"
   ],
   "programmingLanguages": [
     "Python",
-    "Rust",
     "PHP"
   ],
   "learning": [
-    "Fortran",
-    "x86_64 Assembly",
-    "OS Development",
-    "GPU Programming"
+    "Cybersecurity"
   ],
   "achievements": [
     {
@@ -32,18 +25,6 @@
     }
   ],
   "projects": [
-    {
-      "name": "AssemblyOS",
-      "description": "AssemblyOS is a simple operating system written in assembly language by AI",
-      "technologies": ["ChatGPT/Claude", "x86_64 Assembly"],
-      "link": "https://github.com/zanderlewis/assembly-os"
-    },
-    {
-      "name": "Linkverse",
-      "description": "A small and free link shortener that also generates QR codes",
-      "technologies": ["Laravel", "MySQL", "PHP"],
-      "link": "https://github.com/postaverse/linkverse.us"
-    },
     {
       "name": "Postaverse",
       "description": "Open source social media platform with a universe theme",
@@ -55,18 +36,6 @@
       "description": "A Rust-like file structure for Java - Removing the weird Java file structure",
       "technologies": ["Gradle", "Rust"],
       "link": "https://github.com/zanderlewis/rusty-java"
-    },
-    {
-      "name": "WildflowerOS",
-      "description": "Fork of MOROS, a simple operating system written in Rust and x86_64 Assembly",
-      "technologies": ["Rust", "x86_64 Assembly"],
-      "link": "https://github.com/wildflower-os/wildflower"
-    },
-    {
-      "name": "Yotta",
-      "description": "Pure no_std Rust arbitrary-precision integer library",
-      "technologies": ["Rust"],
-      "link": "https://github.com/zanderlewis/yotta"
     }
   ],
   "education": [
@@ -77,9 +46,23 @@
       "achievements": []
     },
     {
-      "degree": "Ongoing",
+      "degree": "Completed",
       "school": "Homeschool",
       "year": "2017-2025",
+      "achievements": []
+    },
+    {
+      "degree": "Completed",
+      "school": "Montreat College",
+      "year": "2025",
+      "achievements": [
+        "Cybersecurity Summer Camp"
+      ]
+    },
+    {
+      "degree": "Coming Up",
+      "school": "Franklin School of Innovation",
+      "year": "2025",
       "achievements": []
     }
   ],
