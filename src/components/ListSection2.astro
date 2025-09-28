@@ -29,6 +29,14 @@ interface Props {
 }
 
 const { sectionType, title, iconPath, data } = Astro.props;
+
+const sortedAchievements = (Array.isArray(data) ? (data as Achievement[]) : [])
+    .slice()
+    .reverse();
+
+const sortedEducation = (Array.isArray(data) ? (data as Education[]) : [])
+    .slice()
+    .reverse();
 ---
 
 <div class="rounded-xl p-8 border border-gray-600/50">
@@ -79,9 +87,9 @@ const { sectionType, title, iconPath, data } = Astro.props;
     {
         sectionType === "achievements" &&
             Array.isArray(data) &&
-            data.length > 0 && (
+            sortedAchievements.length > 0 && (
                 <div class="space-y-4">
-                    {(data as Achievement[]).map((ach) => (
+                    {sortedAchievements.map((ach) => (
                         <div class="p-6 rounded-lg border border-gray-600/50">
                             <div class="flex justify-between items-start mb-2">
                                 <h3 class="text-xl font-semibold text-white">
@@ -99,9 +107,9 @@ const { sectionType, title, iconPath, data } = Astro.props;
     }
 
     {
-        sectionType === "education" && Array.isArray(data) && data.length > 0 && (
+        sectionType === "education" && Array.isArray(data) && sortedEducation.length > 0 && (
             <div class="space-y-4">
-                {(data as Education[]).map((edu) => (
+                {sortedEducation.map((edu) => (
                     <div class="p-6 rounded-lg border border-gray-600/50">
                         <div class="flex justify-between items-start mb-4">
                             <div>

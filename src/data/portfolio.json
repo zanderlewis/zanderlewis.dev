@@ -5,7 +5,7 @@
   "title": "Software Developer",
   "location": "Candler, NC",
   "image": "https://avatars.githubusercontent.com/u/158775116?v=4",
-  "bio": "Developer with a passion for Red Teaming, Open Source, and Software Development.",
+  "bio": "I make things.",
   "skills": [
     "Web Development",
     "Software Development"
@@ -15,7 +15,9 @@
     "PHP"
   ],
   "learning": [
-    "Cybersecurity"
+    "Cybersecurity",
+    "Rust",
+    "Java"
   ],
   "achievements": [
     {
@@ -32,23 +34,29 @@
       "link": "https://github.com/postaverse/postaverse"
     },
     {
-      "name": "Rusty Java",
-      "description": "A Rust-like file structure for Java - Removing the weird Java file structure",
-      "technologies": ["Gradle", "Rust"],
-      "link": "https://github.com/zanderlewis/rusty-java"
+      "name": "Lectern",
+      "description": "A lightning-fast Composer alternative written in Rust",
+      "technologies": ["Rust"],
+      "link": "https://github.com/zanderlewis/lectern"
+    },
+    {
+      "name": "Hyperlight",
+      "description": "An experimental programming language for HPC",
+      "technologies": ["Rust", "LLVM-18"],
+      "link": "https://github.com/windfall-tech/hyperlight"
     }
   ],
   "education": [
     {
       "degree": "Completed",
-      "school": "CS50x",
-      "year": "2023",
+      "school": "Homeschool",
+      "year": "2017-2025",
       "achievements": []
     },
     {
       "degree": "Completed",
-      "school": "Homeschool",
-      "year": "2017-2025",
+      "school": "CS50x",
+      "year": "2023",
       "achievements": []
     },
     {
@@ -60,7 +68,7 @@
       ]
     },
     {
-      "degree": "Coming Up",
+      "degree": "High School",
       "school": "Franklin School of Innovation",
       "year": "2025",
       "achievements": []

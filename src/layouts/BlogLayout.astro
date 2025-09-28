@@ -1,0 +1,104 @@
+---
+import Layout from "./Layout.astro";
+const { title = "", pubDate = null, description = "", tags = [] } = Astro.props.frontmatter ?? {};
+---
+
+<Layout title={title} description={description}>
+  <main class="relative min-h-screen p-8">
+    <div class="max-w-3xl mx-auto">
+      <nav class="mb-6">
+        <a href="/blog" class="text-sm text-gray-400 hover:text-white">← Back to blog</a>
+      </nav>
+
+      <header class="mb-6">
+        <h1 class="text-4xl font-bold text-white mb-2">{title}</h1>
+        {pubDate && (
+          <p class="text-gray-400 text-sm">{new Date(pubDate).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        )}
+        {description && <p class="text-gray-300 mt-4">{description}</p>}
+
+        {tags && tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-2">
+            {tags.map(tag => (
+              <a href={`/blog/tags/${encodeURIComponent(tag)}`} class="text-sm px-2 py-1 bg-white/5 rounded text-gray-200 hover:bg-white/10">#{tag}</a>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <article class="prose prose-invert max-w-none text-gray-100">
+        <slot />
+      </article>
+
+      <footer class="mt-12 text-sm text-gray-400">
+        <nav class="mb-6">
+          <a href="/blog" class="text-sm text-gray-400 hover:text-white">← Back to blog</a>
+        </nav>
+        <p>— <a href="/" class="text-white hover:underline">Zander Lewis</a></p>
+      </footer>
+    </div>
+  </main>
+</Layout>
+
+<!-- Prism (lightweight client-side syntax highlighting) -->
+<link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" />
+<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
+<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-clike.min.js"></script>
+<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script>
+  // Initialize Prism after load
+  window.addEventListener && window.addEventListener('DOMContentLoaded', () => {
+    if (window.Prism && Prism.highlightAll) {
+      Prism.highlightAll();
+    }
+  });
+</script>
+
+<style is:global>
+  /* Fallback styles for markdown content when Tailwind typography isn't available */
+  .prose {
+    color: #e6edf3;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+  }
+
+  .prose h1 { font-size: 1.9rem; color: #fff; margin-top: 1.2rem; margin-bottom: 0.6rem; }
+  .prose h2 { font-size: 1.6rem; color: #fff; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .prose h3 { font-size: 1.25rem; color: #fff; margin-top: 0.8rem; margin-bottom: 0.4rem; }
+
+  .prose p { margin-bottom: 0.9rem; color: #cbd5e1; }
+  .prose a { color: rgb(139,92,246); text-decoration: underline; }
+  .prose a:hover { color: rgb(224,204,250); }
+
+  .prose ul, .prose ol { padding-left: 1.25rem; margin-bottom: 0.9rem; }
+  .prose li { margin-bottom: 0.35rem; }
+
+  .prose pre {
+    background: #0b1220;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    overflow: auto;
+    color: #f8fafc;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .prose code {
+    background: rgba(255,255,255,0.03);
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+  }
+
+  .prose blockquote {
+    border-left: 4px solid rgba(139,92,246,0.4);
+    padding-left: 1rem;
+    color: #cbd5e1;
+    margin: 0 0 0.9rem 0;
+  }
+
+  .prose img { max-width: 100%; border-radius: 8px; }
+</style>
