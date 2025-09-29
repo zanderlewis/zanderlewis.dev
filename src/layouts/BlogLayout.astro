@@ -30,11 +30,11 @@ const { title = "", pubDate = null, description = "", tags = [] } = Astro.props.
         <slot />
       </article>
 
-      <footer class="mt-12 text-sm text-gray-400">
-        <nav class="mb-6">
+      <footer class="mt-4 text-sm text-gray-400">
+        <p>- <a href="/" class="text-white hover:underline">Zander Lewis</a></p>
+        <nav class="mt-6">
           <a href="/blog" class="text-sm text-gray-400 hover:text-white">← Back to blog</a>
         </nav>
-        <p>— <a href="/" class="text-white hover:underline">Zander Lewis</a></p>
       </footer>
     </div>
   </main>
@@ -42,10 +42,10 @@ const { title = "", pubDate = null, description = "", tags = [] } = Astro.props.
 
 <!-- Prism (lightweight client-side syntax highlighting) -->
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" />
-<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
-<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-clike.min.js"></script>
-<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-javascript.min.js"></script>
-<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js" />
+<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-clike.min.js" />
+<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-javascript.min.js" />
+<script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-python.min.js" />
 <script>
   // Initialize Prism after load
   window.addEventListener && window.addEventListener('DOMContentLoaded', () => {
