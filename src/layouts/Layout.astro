@@ -6,20 +6,6 @@ const {
   description = portfolioData.bio,
   keywords = [...portfolioData.skills, ...portfolioData.programmingLanguages, ...portfolioData.learning].join(", ")
 } = Astro.props;
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": portfolioData.name,
-  "url": Astro.request.url,
-  "sameAs": portfolioData.links.map(link => ({
-      "@type": "WebSite",
-      "url": link.url,
-      "name": link.name
-    })),
-  "description": description,
-  "image": portfolioData.image
-};
 ---
 
 <html lang="en">
@@ -45,9 +31,6 @@ const jsonLd = {
       rel="stylesheet"
     />
     <link rel="canonical" href={Astro.request.url} />
-    <script type="application/ld+json">
-      {JSON.stringify(jsonLd)}
-    </script>
   </head>
   <body>
     <div class="_bg"></div>

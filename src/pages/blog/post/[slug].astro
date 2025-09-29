@@ -4,7 +4,7 @@
 
 import { getAllSlugs } from "../../../lib/posts";
 
-// Pre-render all legacy post slugs to satisfy Astro's requirement for dynamic routes
+// Pre-render all legacy post-slugs to satisfy Astro's requirement for dynamic routes
 export async function getStaticPaths(): Promise<Array<{ params: { slug: string } }>> {
   const slugs = getAllSlugs();
   return slugs.map(s => ({ params: { slug: s } }));
