@@ -41,6 +41,10 @@ const filtered = posts
         ))}
       </ul>
 
+      <nav class="mt-6">
+        <a href="/blog" class="text-sm text-gray-400 hover:text-white">← Back to blog</a>
+      </nav>
+
       {filtered.length === 0 && (
         <p class="text-gray-400">No posts found for this tag.</p>
       )}

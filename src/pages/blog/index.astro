@@ -13,7 +13,7 @@ const posts = getAllPosts().sort((a, b) => new Date(b.frontmatter.pubDate).getTi
       </nav>
 
       <h1 class="text-4xl font-bold text-white mb-6">Blog</h1>
-      <p class="text-gray-300 mb-10">Thoughts, notes, and updates.</p>
+      <p class="text-gray-300 mb-10">Blog posts on a variety of topics.</p>
 
       <ul class="space-y-4">
         {posts.map((post) => (
