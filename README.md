@@ -13,7 +13,7 @@ This is the source code for my personal website, [zanderlewis.dev](https://zande
 - **Social Links**: Connects to my social media profiles.
 
 # Running the Project
-To run this project locally, you can run `pnpm run dev` in the project directory. This will start a local development server where you can view the site.
+To run this project locally, you can run `pnpm run dev` or `npm run dev` in the project directory. This will start a local development server where you can view the site.
 
 # Blogging
 - Posts live in `src/pages/blog` as Markdown files (`.md`).
@@ -30,4 +30,5 @@ tags: [tag1, tag2]
 Your content here.
 ```
 
+- There is also an optional `editedDate` variable to indicate when the post was last edited at.
 - The blog index is at `/blog` and lists posts by `pubDate` (newest first).
