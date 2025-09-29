@@ -32,3 +32,4 @@ Your content here.
 
 - There is also an optional `editedDate` variable to indicate when the post was last edited at.
 - The blog index is at `/blog` and lists posts by `pubDate` (newest first).
+- By clicking on a post's tag, it will bring you to another page with all the posts of that tag.
