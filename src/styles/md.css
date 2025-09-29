@@ -1,0 +1,44 @@
+.prose {
+    color: #e6edf3;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+}
+
+.prose h1 { font-size: 1.9rem; color: #fff; margin-top: 1.2rem; margin-bottom: 0.6rem; }
+.prose h2 { font-size: 1.6rem; color: #fff; margin-top: 1rem; margin-bottom: 0.5rem; }
+.prose h3 { font-size: 1.25rem; color: #fff; margin-top: 0.8rem; margin-bottom: 0.4rem; }
+
+.prose p { margin-bottom: 0.9rem; color: #cbd5e1; }
+.prose a { color: rgb(139,92,246); text-decoration: underline; }
+.prose a:hover { color: rgb(224,204,250); }
+
+.prose ul, .prose ol { padding-left: 1.25rem; margin-bottom: 0.9rem; }
+.prose li { margin-bottom: 0.35rem; }
+
+.prose pre {
+    background: #0b1220;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    overflow: auto;
+    color: #f8fafc;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin-bottom: 0.9rem;
+}
+
+.prose code {
+    background: rgba(255,255,255,0.03);
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.prose blockquote {
+    border-left: 4px solid rgba(139,92,246,0.4);
+    padding-left: 1rem;
+    color: #cbd5e1;
+    margin: 0 0 0.9rem 0;
+}
+
+.prose img { max-width: 100%; border-radius: 8px; }
