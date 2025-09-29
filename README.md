@@ -16,7 +16,7 @@ This is the source code for my personal website, [zanderlewis.dev](https://zande
 To run this project locally, you can run `pnpm run dev` or `npm run dev` in the project directory. This will start a local development server where you can view the site.
 
 # Blogging
-- Posts live in `src/pages/blog` as Markdown files (`.md`).
+- Posts live in `src/pages/blog/content` as Markdown files (`.md`).
 - Each post should include frontmatter:
 
 ```md
