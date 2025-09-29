@@ -1,0 +1,13 @@
+---
+interface Props {
+  tag: string;
+  href?: string;
+  size?: 'sm' | 'md';
+}
+const { tag, href = `/blog/tags/${encodeURIComponent(tag)}`, size = 'md' } = Astro.props as Props;
+const padding = size === 'sm' ? 'px-2 py-0.5 text-xs' : 'px-2 py-1 text-sm';
+---
+<a href={href} class={`inline-flex items-center gap-2 ${padding} bg-white/5 rounded text-gray-200 hover:bg-white/10 transition-colors`}>
+  #{tag}
+</a>
+

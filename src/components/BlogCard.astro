@@ -1,0 +1,39 @@
+---
+import TagPill from "./TagPill.astro";
+
+interface PostModule {
+  frontmatter: {
+    slug?: string;
+    title?: string;
+    pubDate?: string | number | Date;
+    editedDate?: string | number | Date | null;
+    description?: string;
+    tags?: string[];
+  };
+  default: any;
+  filePath?: string;
+}
+
+const { post } = Astro.props as { post: PostModule };
+const fm = post.frontmatter ?? {};
+const slug = String(fm.slug ?? post.filePath ?? "").replace(/^.*content\//, "").replace(/\.(md|mdx|markdown)$/i, "");
+---
+<li class="p-5 border border-gray-500/30 rounded-lg hover:bg-white/5 transition-colors">
+  <a href={`/blog/${slug}`} class="block">
+    <h2 class="text-2xl font-semibold text-white">{fm.title}</h2>
+    <p class="text-gray-400 text-sm mt-1">{fm.pubDate ? new Date(fm.pubDate).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric', timeZone: "UTC" }) : ''}</p>
+    {fm.editedDate && <p class="text-gray-400 text-sm mt-1">{"Last edited at: " + new Date(fm.editedDate).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric', timeZone: "UTC" })}</p>}
+    {fm.description && (
+      <p class="text-gray-300 mt-2">{fm.description}</p>
+    )}
+  </a>
+
+  {fm.tags && fm.tags.length > 0 && (
+    <div class="mt-3 flex flex-wrap gap-2">
+      {fm.tags.map((t: string) => (
+        <TagPill tag={t} size="sm" />
+      ))}
+    </div>
+  )}
+</li>
+

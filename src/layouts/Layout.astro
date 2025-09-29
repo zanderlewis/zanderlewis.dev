@@ -35,21 +35,10 @@ const {
   <body>
     <div class="_bg"></div>
     <slot />
-    <script>
-      window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        const bg = document.querySelector("._bg");
-        if (bg) {
-          // Update the background position using modulo arithmetic for an infinite effect:
-          const offset = (scrollY * 0.05) % 200;
-          (bg as HTMLElement).style.backgroundPosition = `0 ${offset}px`;
-        }
-      });
-    </script>
-  </body>
-</html>
+   </body>
+ </html>
 
-<style is:global>
+ <style is:global>
   :root {
     --accent: 139, 92, 246;
     --accent-light: 224, 204, 250;

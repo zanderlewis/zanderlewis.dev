@@ -1,35 +1,126 @@
 ---
-export interface Props {
-    title: string;
-    iconPath: string;
-    color: string; // e.g., "purple", "pink", "blue"
-    items: string[];
+export interface Project {
+  name: string;
+  link: string;
+  description: string;
+  technologies: string[];
 }
 
-const { title, iconPath, color, items } = Astro.props;
+export interface Achievement {
+  title: string;
+  description: string;
+  year?: string;
+}
+
+export interface Education {
+  degree?: string;
+  school: string;
+  year?: string;
+  achievements?: string[];
+}
+
+interface Props {
+  title: string;
+  iconPath: string;
+  color?: string;
+  items?: string[];
+  sectionType?: 'projects' | 'achievements' | 'education';
+  data?: Project[] | Achievement[] | Education[];
+  reverse?: boolean;
+}
+
+const {
+  title,
+  iconPath,
+  color = 'purple',
+  items = undefined,
+  sectionType = undefined,
+  data = undefined,
+  reverse = true,
+} = Astro.props as Props;
+
+const hasSimpleItems = Array.isArray(items) && items.length > 0;
+const hasData = Array.isArray(data) && data.length > 0;
+
+// When reversing, do not mutate original array
+function maybeReverse<T>(arr: T[] | undefined) {
+  if (!arr) return [] as T[];
+  return reverse ? arr.slice().reverse() : arr.slice();
+}
+
+const projects = sectionType === 'projects' && hasData ? (data as Project[]) : [];
+const achievements = sectionType === 'achievements' && hasData ? maybeReverse<Achievement>(data as Achievement[]) : [];
+const education = sectionType === 'education' && hasData ? maybeReverse<Education>(data as Education[]) : [];
 ---
 
 <div class="rounded-xl p-8 border border-gray-500/30">
-    <h2 class="text-2xl font-semibold text-white mb-6 flex items-center">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 mr-2 text-purple-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-        >
-            <path d={iconPath}></path>
-        </svg>
-        {title}
-    </h2>
+  <h2 class="text-2xl font-semibold text-white mb-6 flex items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path d={iconPath}></path>
+    </svg>
+    {title}
+  </h2>
+
+  {hasSimpleItems && (
     <div class="flex flex-wrap gap-3">
-        {
-            items.map((item: unknown) => (
-                <span class="px-4 py-2 rounded-lg border border-gray-500/50 transition-colors text-gray-300 hover:bg-gray-700/30">
-                    {item}
-                </span>
-            ))
-        }
+      {items!.map((item) => (
+        <span class="px-4 py-2 rounded-lg border border-gray-500/50 transition-colors text-gray-300 hover:bg-gray-700/30">{item}</span>
+      ))}
     </div>
+  )}
+
+  {sectionType === 'projects' && projects.length > 0 && (
+    <div class="grid md:grid-cols-2 gap-6">
+      {projects.map((project) => (
+        <a href={project.link} target="_blank" rel="noopener noreferrer" class="block">
+          <div class="p-6 rounded-lg hover:bg-gray-700/50 transition-colors border border-gray-600/50">
+            <h3 class="text-xl font-semibold text-white mb-2">{project.name}</h3>
+            <p class="text-gray-300 mb-4">{project.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span class="text-xs bg-gray-600/50 text-gray-300 px-2 py-1 rounded">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  )}
+
+  {sectionType === 'achievements' && achievements.length > 0 && (
+    <div class="space-y-4">
+      {achievements.map((ach) => (
+        <div class="p-6 rounded-lg border border-gray-600/50">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-semibold text-white">{ach.title}</h3>
+            {ach.year && <span class="text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full text-sm">{ach.year}</span>}
+          </div>
+          <p class="text-gray-300">{ach.description}</p>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {sectionType === 'education' && education.length > 0 && (
+    <div class="space-y-4">
+      {education.map((edu) => (
+        <div class="p-6 rounded-lg border border-gray-600/50">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold text-white">{edu.school}</h3>
+              {edu.degree && <p class="text-gray-300">{edu.degree}</p>}
+            </div>
+            {edu.year && <span class="text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full text-sm">{edu.year}</span>}
+          </div>
+          {edu.achievements && (
+            <div class="flex flex-wrap gap-2">
+              {edu.achievements.map((a) => (
+                <span class="bg-gray-600/50 text-gray-300 px-3 py-1 rounded-full text-sm">{a}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
 </div>

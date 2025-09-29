@@ -34,6 +34,18 @@
     font-size: 0.9rem;
 }
 
+/* Remove per-line / token backgrounds inside code blocks (keep inline <code> styles).
+   Some syntax highlighters add background to spans/tokens/lines; this targets code
+   elements inside pre and all their descendants and resets those backgrounds. */
+.prose pre code,
+.prose pre code *,
+.prose pre .line,
+.prose pre .token {
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
 .prose blockquote {
     border-left: 4px solid rgba(139,92,246,0.4);
     padding-left: 1rem;
