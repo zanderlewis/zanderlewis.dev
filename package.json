@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@astrojs/sitemap": "^3.4.1",
-    "astro": "^5.10.1"
+    "astro": "^6.0.5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
