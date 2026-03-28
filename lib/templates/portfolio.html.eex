@@ -1,0 +1,43 @@
+<section class="hero">
+  <header>
+    <h1><%= @title || "Portfolio" %></h1>
+    <p class="lead">
+      A selection of projects and experiments. Click any project to learn more.
+    </p>
+  </header>
+
+  <hr />
+
+  <section class="projects">
+    <%= if @projects == [] or @projects == nil do %>
+      <div class="card">
+        <p class="note">No projects added yet. Check back soon.</p>
+      </div>
+    <% else %>
+      <div class="grid">
+        <%= for project <- @projects do %>
+          <article class="card">
+            <h2><%= project[:name] || project["name"] %></h2>
+            <p>
+              <%= project[:description] || project["description"] || "" %>
+            </p>
+
+            <%= if project[:details] || project["details"] do %>
+              <p class="small"><%= project[:details] || project["details"] %></p>
+            <% end %>
+
+            <div class="row" style="margin-top: .75rem;">
+              <%= if project[:link] || project["link"] do %>
+                <a class="btn" target="_blank" href="<%= project[:link] || project["link"] %>">View project</a>
+              <% end %>
+
+              <%= if project[:repository] || project["repository"] do %>
+                <a class="btn secondary" target="_blank" href="<%= project[:repository] || project["repository"] %>">Repository</a>
+              <% end %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+</section>

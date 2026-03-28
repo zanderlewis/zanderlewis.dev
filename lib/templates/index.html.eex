@@ -1,0 +1,20 @@
+<section class="hero">
+  <section class="about">
+    <h2 class="section-title">About Me</h2>
+    <p>
+      I'm an entry-level software developer aged <%= @age %>.
+      I am currently learning the Elixir programming language in hopes of
+      finding a job as a software engineer.
+    </p>
+  </section>
+  <hr>
+  <section class="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>
+      You can contact me at
+      <a href="mailto:zander@zanderlewis.dev">
+        zander@zanderlewis.dev
+      </a>
+    </p>
+  </section>
+</section>

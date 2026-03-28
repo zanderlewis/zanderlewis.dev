@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zander Lewis | <%= @title || "Page" %></title>
+
+    <meta name="description" content="<%= @description || "Zander Lewis — full-stack web developer. Portfolio, projects, and resume." %>" />
+    <meta name="keywords" content="<%= @keywords || "Zander Lewis, web developer, portfolio, resume, Elixir, Phoenix" %>" />
+    <meta name="author" content="Zander Lewis" />
+
+    <meta property="og:title" content="Zander Lewis | <%= @title || "Page" %>" />
+    <meta property="og:description" content="<%= @description || "Zander Lewis — software developer. Portfolio, projects, and resume." %>" />
+    <meta property="og:type" content="<%= @og_type || "website" %>" />
+    <meta property="og:url" content="<%= @page_url || @canonical || @url || @base_url || "https://zanderlewis.dev" %>" />
+    <meta property="og:image" content="<%= @image || (if @base_url, do: @base_url <> "/static/og-image.png", else: "https://zanderlewis.dev/static/og-image.png") %>" />
+
+    <meta name="twitter:card" content="<%= @twitter_card || "summary_large_image" %>" />
+    <meta name="twitter:creator" content="@zanderlewis" />
+    <meta name="twitter:title" content="Zander Lewis | <%= @title || "Page" %>" />
+    <meta name="twitter:description" content="<%= @description || "Zander Lewis — software developer. Portfolio, projects, and resume." %>" />
+
+    <link rel="canonical" href="<%= @canonical || @page_url || @url || @base_url || "https://zanderlewis.dev" %>" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">Zander Lewis</a>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/resume">Resume</a>
+        </nav>
+      </div>
+    </header>
+    <br>
+
+    <main class="container main-content" role="main">
+      <%= @inner_content %>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Powered by <a target="_blank" href="https://hex.pm/packages/mflask">Master Flask</a> v<%= @ver %></p>
+      </div>
+    </footer>
+  </body>
+</html>

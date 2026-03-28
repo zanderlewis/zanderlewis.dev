@@ -1,0 +1,67 @@
+<section class="hero">
+  <section class="about">
+    <h1><%= @title || "Resume" %></h1>
+    <p class="note">
+      This page summarizes experience and roles. For a more detailed Resume, download the PDF version
+      <a href="/static/Resume__2026_03_28.pdf" target="_blank">here.</a>
+    </p>
+  </section>
+
+  <hr />
+
+  <section class="experience">
+    <h2 class="section-title">Experience</h2>
+
+    <%= if @experience && Enum.any?(@experience) do %>
+      <div class="grid">
+        <%= for exp <- @experience do %>
+          <article class="card">
+            <h3><%= exp[:position] || exp.position || "Position" %></h3>
+            <p class="small"><strong><%= exp[:company] || exp.company %></strong></p>
+            <p class="note"><%= exp[:description] || exp.description %></p>
+          </article>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="note">No experience listed yet.</p>
+    <% end %>
+  </section>
+
+  <hr />
+
+  <section class="skills">
+    <h2 class="section-title">Skills & Technologies</h2>
+
+    <%= if @skills && Enum.any?(@skills) do %>
+      <div class="grid">
+        <%= for skill <- @skills do %>
+          <div class="card">
+            <p><%= skill %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="note">No skills listed yet.</p>
+    <% end %>
+  </section>
+
+  <hr />
+
+  <section class="education">
+    <h2 class="section-title">Education</h2>
+
+    <%= if @education && Enum.any?(@education) do %>
+      <div class="grid">
+        <%= for edu <- @education do %>
+          <article class="card">
+            <h3><%= edu[:degree] || edu.degree || "Degree" %></h3>
+            <p class="small"><strong><%= edu[:institution] || edu.institution %></strong></p>
+            <p class="note"><%= edu[:graduation_year] || edu.graduation_year %></p>
+          </article>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="note">No education listed yet.</p>
+    <% end %>
+  </section>
+</section>
