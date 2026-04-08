@@ -284,6 +284,31 @@ blockquote {
     flex-wrap: wrap;
 }
 
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all var(--transition);
+    border: 1px solid transparent;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+    border-color: rgba(var(--accent-rgb), 0.2);
+    background: rgba(var(--accent-rgb), 0.05);
+    text-decoration: none;
+}
+
 /* Footer */
 .site-footer {
     margin-top: 2rem;
@@ -320,6 +345,9 @@ img {
         gap: 0.5rem;
     }
     .nav {
+        gap: 0.5rem;
+    }
+    .social-links {
         gap: 0.5rem;
     }
 }

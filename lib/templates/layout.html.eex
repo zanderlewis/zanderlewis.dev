@@ -43,6 +43,13 @@
 
     <footer class="site-footer">
       <div class="container">
+        <div class="social-links">
+          <a href="https://github.com/zanderlewis" target="_blank" title="GitHub">GitHub</a>
+          <a href="https://codeberg.org/zanderlewis" target="_blank" title="Codeberg">Codeberg</a>
+          <a href="https://linkedin.com/in/zanderlewis" target="_blank" title="LinkedIn">LinkedIn</a>
+          <a href="mailto:zander@zanderlewis.dev" title="Email">Email</a>
+          <a href="https://www.chess.com/member/zanderlewisdev" target="_blank" title="Chess.com">Chess.com</a>
+        </div>
         <p>Powered by <a target="_blank" href="https://hex.pm/packages/mflask">Master Flask</a> v<%= @ver %></p>
       </div>
     </footer>
