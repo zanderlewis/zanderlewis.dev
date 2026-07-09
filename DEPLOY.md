@@ -35,8 +35,12 @@ server:
 ### 4. Start the runner
 
 ```bash
-make runner-up      # docker compose up -d in .runner/
-make runner-logs    # optional: watch logs
+sudo chown -R 1001:1001 .runner/data   # if needed
+make runner-up
+make runner-logs
+```
+
+Uses plain `docker run` (no Compose plugin required). Optional: install `docker-compose-v2` if you prefer `docker compose`.
 ```
 
 Runner should show **Idle** in Codeberg. The workflow uses `runs-on: crystal` which maps to the `crystallang/crystal:1.16.3-alpine` job container.
