@@ -17,6 +17,12 @@ else
   echo "→ Keeping existing .runner/data/runner-config.yml"
 fi
 
+# Fix known invalid values from older examples (file may be owned by uid 1001)
+fix_config() {
+  sed -i 's/^  shutdown_timeout: 0$/  shutdown_timeout: 0s/' "$RUNNER_DIR/data/runner-config.yml"
+}
+fix_config 2>/dev/null || sudo sed -i 's/^  shutdown_timeout: 0$/  shutdown_timeout: 0s/' "$RUNNER_DIR/data/runner-config.yml"
+
 # Forgejo runner container runs as uid 1001
 if chown -R 1001:1001 "$RUNNER_DIR/data" 2>/dev/null; then
   echo "→ Set data/ ownership to 1001:1001"

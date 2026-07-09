@@ -1,4 +1,4 @@
-.PHONY: install build serve dev deploy clean runner-init runner-up runner-down runner-logs runner-rm
+.PHONY: install build serve dev deploy clean runner-init runner-fix runner-up runner-down runner-logs runner-rm
 
 install:
 	shards install
@@ -16,6 +16,9 @@ deploy:
 
 runner-init:
 	./scripts/runner/init.sh
+
+runner-fix:
+	./scripts/runner/fix-config.sh
 
 runner-up:
 	./scripts/runner/up.sh
