@@ -40,10 +40,9 @@ make runner-up
 make runner-logs
 ```
 
-Uses plain `docker run` (no Compose plugin required). Optional: install `docker-compose-v2` if you prefer `docker compose`.
-```
+Uses plain `docker run` (no Compose plugin required).
 
-Runner should show **Idle** in Codeberg. The workflow uses `runs-on: crystal` which maps to the `crystallang/crystal:1.16.3-alpine` job container.
+Runner should show **Idle** in Codeberg. Workflow uses `runs-on: ubuntu-latest`.
 
 ### 5. Repository secrets
 
@@ -54,7 +53,7 @@ Runner should show **Idle** in Codeberg. The workflow uses `runs-on: crystal` wh
 | `CLOUDFLARE_API_TOKEN` | Cloudflare API token (Pages Edit) |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
 
-Push to `main` to deploy.
+Push to `main` to deploy. First run auto-creates the Cloudflare Pages project `website`.
 
 ### Stop the runner
 

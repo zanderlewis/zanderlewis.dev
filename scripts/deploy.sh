@@ -20,6 +20,9 @@ if [[ -z "${CLOUDFLARE_API_TOKEN:-}" || -z "${CLOUDFLARE_ACCOUNT_ID:-}" ]]; then
   exit 1
 fi
 
+echo "→ Ensuring Cloudflare Pages project exists..."
+npx wrangler@4 pages project create website --production-branch=main || true
+
 echo "→ Deploying to Cloudflare Pages..."
 npx wrangler@4 pages deploy public --project-name=website --branch=main
 
