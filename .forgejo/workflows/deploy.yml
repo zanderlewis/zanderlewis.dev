@@ -1,0 +1,28 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build site
+        run: |
+          docker run --rm -v "$PWD:/app" -w /app crystallang/crystal:1.16.3-alpine sh -c "
+            apk add --no-cache git &&
+            shards install &&
+            shards build --release &&
+            ./bin/capsule build
+          "
+
+      - name: Deploy to Cloudflare Pages
+        run: npx wrangler@4 pages deploy public --project-name=website --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

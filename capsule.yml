@@ -1,0 +1,10 @@
+title: Zander Lewis
+description: Software engineer from Candler, NC — building with Crystal, Rust, and TypeScript.
+author: Zander Lewis
+location: Candler, NC
+tagline: Software engineer · robotics · open source
+github: https://github.com/zanderlewis
+codeberg: https://codeberg.org/zanderlewis
+website: https://zanderlewis.dev
+base_url: /
+output: public

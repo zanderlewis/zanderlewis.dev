@@ -1,0 +1,44 @@
+---
+title: About
+---
+
+# About
+
+I'm **Zander Lewis** — a 17-year-old software engineer based in **Candler, NC** (he/him). I work with [+crystal], [+rust], [+typescript], [+elixir], and [+linux], and I'm currently involved with **Limelight Robotics**.
+
+I like building things that are fast, understandable, and actually shippable: robot control languages, save editors, package managers, and static site tooling like the site you're on now.
+
+## Stack
+
+```crystal {title="now.cr" line-numbers=true highlight=1-3}
+LANGS = ["Crystal", "Rust", "TypeScript", "Elixir"]
+OS    = "Kubuntu"
+FOCUS = ["robotics", "developer tools", "open source"]
+```
+
+## Experience
+
+::: timeline { company="Limelight Robotics" role="Software Engineer" date="2024 – Present" }
+* Robotics software and tooling for competitive teams.
+* Contributor to the Enka-Candler Robotics Language (ECRL).
+:::
+
+::: timeline { company="Independent / Open Source" role="Maintainer" date="2024 – Present" }
+* Ship and maintain projects across GitHub and Codeberg — from save editors to SSGs.
+* Primary development on Codeberg; GitHub mirrors for reach.
+:::
+
+::: timeline { company="Personal Projects" role="Builder" date="2022 – Present" }
+* Built **Wasteland**, **Composer RS**, **Balance News**, and this portfolio site.
+* Experiment across systems languages, web tooling, and game-adjacent utilities.
+:::
+
+## Find me
+
+- [GitHub](https://github.com/zanderlewis) — mirrors and contributions
+- [Codeberg](https://codeberg.org/zanderlewis) — primary forge
+- [zanderlewis.dev](https://zanderlewis.dev) — previous site (Elixir/Phoenix)
+
+::: note
+Open to collaboration and interesting problems. If you're working on robotics, Crystal, or developer tooling — say hi on either forge.
+:::

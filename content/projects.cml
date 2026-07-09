@@ -1,0 +1,45 @@
+---
+title: Projects
+---
+
+# Projects
+
+Everything I ship in public, in one place. Active repos live on [Codeberg](https://codeberg.org/zanderlewis) first; many are mirrored on [GitHub](https://github.com/zanderlewis).
+
+## Flagship
+
+::: project { name="ECRL" codeberg="zanderlewis/ecrl" github="zanderlewis/ecrl" status="active" }
+The **Enka-Candler Robotics Language** — a [+crystal] DSL for programming FTC and FRC robots. Canonical repo on Codeberg.
+:::
+
+::: project { name="Capsule / CML" codeberg="zanderlewis/capsule" github="zanderlewis/cml" status="beta" }
+This portfolio's engine. Parses `.cml` files into HTML with code capsules, project cards, timelines, and admonitions — no Node.js pipeline.
+:::
+
+## Shipped
+
+::: project { name="Wasteland" github="zanderlewis/wasteland" url="https://zanderlewis.github.io/wasteland/" status="active" }
+Fallout Shelter save editor. [+typescript] frontend, live at zanderlewis.github.io/wasteland.
+:::
+
+::: project { name="Composer RS" github="zanderlewis/composer-rs" status="active" }
+Rust-native PHP dependency manager. Fast installs, modern UX — a from-scratch take on Composer.
+:::
+
+::: project { name="Balance News" github="zanderlewis/balance-news" url="https://news.zanderlewis.dev" status="active" }
+News site and aggregator at news.zanderlewis.dev.
+:::
+
+## Experiments & Archives
+
+::: project { name="Carboxyl" github="zanderlewis/carboxyl" status="beta" }
+Chromium running inside your terminal — a fork of carbonyl, written in [+rust].
+:::
+
+::: project { name="Wakatime Client Remastered" github="zanderlewis/wakatime-client-remastered" status="active" }
+Maintained revival of the wakatime-client npm package.
+:::
+
+::: warning
+Some older repos are archived or mirrors of upstream work. Check the README on each repo for current status.
+:::

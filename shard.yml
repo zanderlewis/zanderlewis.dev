@@ -1,0 +1,14 @@
+name: capsule
+version: 0.1.0
+
+authors:
+  - zanderlewis
+
+targets:
+  capsule:
+    main: src/capsule_cli.cr
+
+dependencies:
+  markd:
+    github: icyleaf/markd
+    version: ~> 0.5.0
