@@ -23,14 +23,16 @@ jobs:
           restore-keys: apt-bookworm-
 
       - name: Cache Crystal
-        id: crystal-cache
         uses: actions/cache@v4
         with:
           path: |
             /usr/bin/crystal
+            /usr/bin/shards
             /usr/share/crystal
+            /usr/lib/crystal
             /etc/apt/sources.list.d/crystal.list
-          key: crystal-bookworm-v1
+          key: crystal-bookworm-v2
+          restore-keys: crystal-bookworm-
 
       - name: Cache shards
         uses: actions/cache@v4
@@ -54,16 +56,18 @@ jobs:
           restore-keys: npm-wrangler-
 
       - name: Install Crystal
-        if: steps.crystal-cache.outputs.cache-hit != 'true'
         run: |
-          apt-get update
-          apt-get install -y curl git ca-certificates
-          curl -fsSL https://crystal-lang.org/install.sh | bash
-          crystal --version
-
-      - name: Verify Crystal
-        if: steps.crystal-cache.outputs.cache-hit == 'true'
-        run: crystal --version
+          if command -v crystal >/dev/null && command -v shards >/dev/null; then
+            echo "Crystal toolchain restored from cache"
+            crystal --version
+            shards --version
+          else
+            apt-get update
+            apt-get install -y curl git ca-certificates
+            curl -fsSL https://crystal-lang.org/install.sh | bash
+            crystal --version
+            shards --version
+          fi
 
       - name: Build site
         run: |
