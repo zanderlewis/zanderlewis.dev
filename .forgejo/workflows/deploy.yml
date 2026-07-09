@@ -1,9 +1,7 @@
 name: Deploy to Cloudflare Pages
 
-# Requires a self-hosted Forgejo runner in Docker — see scripts/runner/
-#   make runner-init && make runner-up
-#
-# Codeberg shared runners (codeberg-small) are unreliable — actions/meta#76
+# Self-hosted Forgejo runner — see scripts/runner/
+# Uses ubuntu-latest (node:22-bookworm) so actions/checkout has Node available.
 
 on:
   push:
@@ -12,13 +10,17 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: crystal
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install build deps
-        run: apk add --no-cache git nodejs npm
+      - name: Install Crystal
+        run: |
+          apt-get update
+          apt-get install -y curl git ca-certificates
+          curl -fsSL https://crystal-lang.org/install.sh | bash
+          crystal --version
 
       - name: Build site
         run: |
