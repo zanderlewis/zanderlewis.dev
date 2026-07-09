@@ -1,0 +1,45 @@
+# Example Forgejo runner config for Codeberg.
+# Copy to .runner/data/runner-config.yml and fill in UUID + token.
+#
+# Get credentials: codeberg.org/zanderlewis/website → Settings → Actions → Runners → Create new runner
+
+log:
+  level: info
+  job_level: info
+
+runner:
+  file: /data/.runner
+  capacity: 2
+  timeout: 3h
+  shutdown_timeout: 0
+  insecure: false
+  fetch_timeout: 30s
+  fetch_interval: 2s
+  report_interval: 1s
+  labels:
+    - crystal:docker://crystallang/crystal:1.16.3-alpine
+    - ubuntu-latest:docker://node:22-bookworm
+
+cache:
+  enabled: true
+  dir: /data/.cache
+  host: ""
+  port: 0
+
+container:
+  network: bridge
+  privileged: false
+  options:
+  workdir_parent:
+  valid_volumes:
+    - /data/cache
+
+host:
+  workdir_parent:
+
+server:
+  connections:
+    codeberg:
+      url: https://codeberg.org/
+      uuid: PASTE_UUID_FROM_CODEBERG
+      token: PASTE_TOKEN_FROM_CODEBERG

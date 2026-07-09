@@ -1,51 +1,47 @@
 # Deploying zanderlewis.dev
 
-## The problem
+## CI: Docker Forgejo runner (recommended)
 
-Codeberg's **shared** Forgejo Actions runners (`codeberg-small`, etc.) are frequently stuck on *"Waiting for a runner"* — [actions/meta#76](https://codeberg.org/actions/meta/issues/76) was opened today for exactly this. It's not your workflow; the hosted runner pool is overloaded/limited.
+Codeberg shared runners are stuck/unreliable. Run your own runner in Docker per the [Forgejo docs](https://forgejo.codeberg.page/docs/latest/admin/actions/installation/docker/).
 
-## Fastest fix: deploy from your laptop
+All runner state lives in **`.runner/`** (gitignored — tokens never committed).
 
-```bash
-export CLOUDFLARE_API_TOKEN="your-token"
-export CLOUDFLARE_ACCOUNT_ID="your-account-id"
-
-chmod +x scripts/deploy.sh
-./scripts/deploy.sh
-```
-
-Or: `make deploy` (same thing).
-
-This builds `public/` and uploads to Cloudflare Pages immediately.
-
-## Reliable CI: self-hosted runner (recommended)
-
-Run Actions jobs on your Kubuntu machine instead of waiting for Codeberg's shared pool.
-
-### 1. Create a runner token
-
-[codeberg.org/zanderlewis/website](https://codeberg.org/zanderlewis/website) → **Settings → Actions → Runners → Create new runner**
-
-Copy the registration token.
-
-### 2. Install and register `forgejo-runner`
+### 1. Scaffold the runner directory
 
 ```bash
-# Download latest forgejo-runner for linux amd64 from:
-# https://codeberg.org/forgejo/runner/releases
-
-forgejo-runner register \
-  --instance https://codeberg.org \
-  --token YOUR_REGISTRATION_TOKEN \
-  --name kubuntu-laptop \
-  --labels self-hosted:host
-
-forgejo-runner daemon
+make runner-init
 ```
 
-Keep `forgejo-runner daemon` running (or install as a systemd user service).
+Creates `.runner/` with `docker-compose.yml` and `data/runner-config.yml`.
 
-### 3. Repository secrets
+### 2. Get Codeberg credentials
+
+[website → Settings → Actions → Runners → Create new runner](https://codeberg.org/zanderlewis/website/settings/actions/runners)
+
+Copy the **UUID** and **token** (shown once).
+
+### 3. Edit config
+
+Open `.runner/data/runner-config.yml` and replace:
+
+```yaml
+server:
+  connections:
+    codeberg:
+      uuid: YOUR_UUID
+      token: YOUR_TOKEN
+```
+
+### 4. Start the runner
+
+```bash
+make runner-up      # docker compose up -d in .runner/
+make runner-logs    # optional: watch logs
+```
+
+Runner should show **Idle** in Codeberg. The workflow uses `runs-on: crystal` which maps to the `crystallang/crystal:1.16.3-alpine` job container.
+
+### 5. Repository secrets
 
 **Settings → Actions → Secrets:**
 
@@ -54,18 +50,28 @@ Keep `forgejo-runner daemon` running (or install as a systemd user service).
 | `CLOUDFLARE_API_TOKEN` | Cloudflare API token (Pages Edit) |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
 
-### 4. Push to main
+Push to `main` to deploy.
 
-The workflow uses `runs-on: self-hosted` and will run on your machine.
+### Stop the runner
+
+```bash
+make runner-down
+```
+
+---
+
+## Manual deploy (no CI)
+
+```bash
+export CLOUDFLARE_API_TOKEN="..."
+export CLOUDFLARE_ACCOUNT_ID="..."
+make deploy
+```
+
+---
 
 ## Cloudflare custom domain
 
 **Workers & Pages → website → Custom domains** → add `zanderlewis.dev`
 
-Point DNS to Cloudflare and remove old Gigalixir records.
-
-## Prerequisites on your machine
-
-- `crystal`, `shards` (already installed)
-- `node` / `npx` (for wrangler)
-- Cloudflare secrets in the repo (for CI) or env (for local deploy)
+Remove old Gigalixir DNS records when live.
