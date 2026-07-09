@@ -4,7 +4,7 @@ title: Projects
 
 # Projects
 
-Everything I ship in public, in one place. Active repos live on [Codeberg](https://codeberg.org/zanderlewis) first; many are mirrored on [GitHub](https://github.com/zanderlewis).
+Everything I ship in public, in one place. Active repos live on [Codeberg](https://codeberg.org/zanderlewis) first; some may be mirrored on [GitHub](https://github.com/zanderlewis).
 
 ## Flagship
 
@@ -12,7 +12,7 @@ Everything I ship in public, in one place. Active repos live on [Codeberg](https
 The **Enka-Candler Robotics Language** — a [+crystal] DSL for programming FTC and FRC robots. Canonical repo on Codeberg.
 :::
 
-::: project { name="Capsule / CML" codeberg="zanderlewis/capsule" github="zanderlewis/cml" status="beta" }
+::: project { name="Capsule / CML" codeberg="zanderlewis/website" github="zanderlewis/zanderlewis.dev" status="beta" }
 This portfolio's engine. Parses `.cml` files into HTML with code capsules, project cards, timelines, and admonitions — no Node.js pipeline.
 :::
 
@@ -22,11 +22,11 @@ This portfolio's engine. Parses `.cml` files into HTML with code capsules, proje
 Fallout Shelter save editor. [+typescript] frontend, live at zanderlewis.github.io/wasteland.
 :::
 
-::: project { name="Composer RS" github="zanderlewis/composer-rs" status="active" }
+::: project { name="Composer RS" github="zanderlewis/composer-rs" status="archived" }
 Rust-native PHP dependency manager. Fast installs, modern UX — a from-scratch take on Composer.
 :::
 
-::: project { name="Balance News" github="zanderlewis/balance-news" url="https://news.zanderlewis.dev" status="active" }
+::: project { name="Balance News" github="zanderlewis/balance-news" status="archived" }
 News site and aggregator at news.zanderlewis.dev.
 :::
 
@@ -36,7 +36,7 @@ News site and aggregator at news.zanderlewis.dev.
 Chromium running inside your terminal — a fork of carbonyl, written in [+rust].
 :::
 
-::: project { name="Wakatime Client Remastered" github="zanderlewis/wakatime-client-remastered" status="active" }
+::: project { name="Wakatime Client Remastered" github="zanderlewis/wakatime-client-remastered" status="archived" }
 Maintained revival of the wakatime-client npm package.
 :::
 

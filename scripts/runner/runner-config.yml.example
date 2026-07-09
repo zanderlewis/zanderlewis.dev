@@ -11,7 +11,7 @@ runner:
   file: /data/.runner
   capacity: 2
   timeout: 3h
-  shutdown_timeout: 0
+  shutdown_timeout: 0s
   insecure: false
   fetch_timeout: 30s
   fetch_interval: 2s
@@ -32,7 +32,7 @@ container:
   options:
   workdir_parent:
   valid_volumes:
-    - /data/cache
+    - /data/.cache
 
 host:
   workdir_parent:

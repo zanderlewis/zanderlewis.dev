@@ -23,14 +23,6 @@ The **Enka-Candler Robotics Language** — a domain language for FTC/FRC robot p
 A modern **Fallout Shelter** save editor built with [+typescript]. Used by players to inspect and modify vault saves in the browser.
 :::
 
-::: project { name="Composer RS" github="zanderlewis/composer-rs" status="active" }
-A lightning-fast **Composer** replacement written in [+rust]. Formerly known as Lectern — dependency management without the PHP overhead.
-:::
-
-::: project { name="Balance News" github="zanderlewis/balance-news" url="https://news.zanderlewis.dev" status="active" }
-A news aggregation project serving **news.zanderlewis.dev**, built with [+php].
-:::
-
 ::: tip
 Most of my active development lives on [Codeberg](https://codeberg.org/zanderlewis), with GitHub mirrors for visibility. PRs welcome on either.
 :::

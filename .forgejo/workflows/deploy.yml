@@ -15,17 +15,62 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Cache apt packages
+        uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: apt-bookworm-v1
+          restore-keys: apt-bookworm-
+
+      - name: Cache Crystal
+        id: crystal-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/bin/crystal
+            /usr/share/crystal
+            /etc/apt/sources.list.d/crystal.list
+          key: crystal-bookworm-v1
+
+      - name: Cache shards
+        uses: actions/cache@v4
+        with:
+          path: lib
+          key: shards-${{ hashFiles('shard.lock') }}
+          restore-keys: shards-
+
+      - name: Cache Capsule binary
+        uses: actions/cache@v4
+        with:
+          path: bin
+          key: bin-${{ hashFiles('shard.lock', 'shard.yml', 'src/**/*.cr') }}
+          restore-keys: bin-
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: /root/.npm
+          key: npm-wrangler-v1
+          restore-keys: npm-wrangler-
+
       - name: Install Crystal
+        if: steps.crystal-cache.outputs.cache-hit != 'true'
         run: |
           apt-get update
           apt-get install -y curl git ca-certificates
           curl -fsSL https://crystal-lang.org/install.sh | bash
           crystal --version
 
+      - name: Verify Crystal
+        if: steps.crystal-cache.outputs.cache-hit == 'true'
+        run: crystal --version
+
       - name: Build site
         run: |
           shards install
-          shards build --release
+          if [[ ! -x bin/capsule ]]; then
+            shards build --release
+          fi
           ./bin/capsule build
 
       - name: Ensure Pages project exists
