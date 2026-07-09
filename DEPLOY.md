@@ -1,54 +1,71 @@
-# Cloudflare Pages — zanderlewis.dev
+# Deploying zanderlewis.dev
 
-This site is a static build (`public/`) deployed to **Cloudflare Pages** from Codeberg CI.
+## The problem
 
-## One-time setup
+Codeberg's **shared** Forgejo Actions runners (`codeberg-small`, etc.) are frequently stuck on *"Waiting for a runner"* — [actions/meta#76](https://codeberg.org/actions/meta/issues/76) was opened today for exactly this. It's not your workflow; the hosted runner pool is overloaded/limited.
 
-### 1. Cloudflare API token
+## Fastest fix: deploy from your laptop
 
-In the [Cloudflare dashboard](https://dash.cloudflare.com/profile/api-tokens), create a token with:
+```bash
+export CLOUDFLARE_API_TOKEN="your-token"
+export CLOUDFLARE_ACCOUNT_ID="your-account-id"
 
-- **Account** → Cloudflare Pages → Edit
-- **Account** → Account Settings → Read (for account ID lookup)
+chmod +x scripts/deploy.sh
+./scripts/deploy.sh
+```
 
-Copy your **Account ID** from the Pages overview sidebar.
+Or: `make deploy` (same thing).
 
-### 2. Codeberg repository secrets
+This builds `public/` and uploads to Cloudflare Pages immediately.
 
-In [codeberg.org/zanderlewis/website](https://codeberg.org/zanderlewis/website) → **Settings → Actions → Secrets**, add:
+## Reliable CI: self-hosted runner (recommended)
+
+Run Actions jobs on your Kubuntu machine instead of waiting for Codeberg's shared pool.
+
+### 1. Create a runner token
+
+[codeberg.org/zanderlewis/website](https://codeberg.org/zanderlewis/website) → **Settings → Actions → Runners → Create new runner**
+
+Copy the registration token.
+
+### 2. Install and register `forgejo-runner`
+
+```bash
+# Download latest forgejo-runner for linux amd64 from:
+# https://codeberg.org/forgejo/runner/releases
+
+forgejo-runner register \
+  --instance https://codeberg.org \
+  --token YOUR_REGISTRATION_TOKEN \
+  --name kubuntu-laptop \
+  --labels self-hosted:host
+
+forgejo-runner daemon
+```
+
+Keep `forgejo-runner daemon` running (or install as a systemd user service).
+
+### 3. Repository secrets
+
+**Settings → Actions → Secrets:**
 
 | Secret | Value |
 |--------|--------|
-| `CLOUDFLARE_API_TOKEN` | API token from step 1 |
-| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID |
+| `CLOUDFLARE_API_TOKEN` | Cloudflare API token (Pages Edit) |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
 
-### 3. Cloudflare Pages project
+### 4. Push to main
 
-On the first successful CI run, Wrangler creates a Pages project named `website` (or attaches to an existing one with that name).
+The workflow uses `runs-on: self-hosted` and will run on your machine.
 
-In **Workers & Pages → website → Custom domains**, add:
+## Cloudflare custom domain
 
-- `zanderlewis.dev`
-- `www.zanderlewis.dev` (optional)
+**Workers & Pages → website → Custom domains** → add `zanderlewis.dev`
 
-### 4. Retire Gigalixir
+Point DNS to Cloudflare and remove old Gigalixir records.
 
-Remove the old Elixir/Phoenix app from Gigalixir and delete any DNS records pointing there once Cloudflare Pages is live.
+## Prerequisites on your machine
 
-## Manual deploy
-
-```bash
-make build
-npx wrangler pages deploy public --project-name=website
-```
-
-Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in your environment.
-
-## Build locally
-
-```bash
-shards install
-shards build --release
-./bin/capsule build   # writes to public/
-make serve            # preview at :3000
-```
+- `crystal`, `shards` (already installed)
+- `node` / `npx` (for wrangler)
+- Cloudflare secrets in the repo (for CI) or env (for local deploy)

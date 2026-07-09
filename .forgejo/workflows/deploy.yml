@@ -1,5 +1,11 @@
 name: Deploy to Cloudflare Pages
 
+# Runs on YOUR machine via a self-hosted Forgejo runner.
+# Codeberg's shared runners (codeberg-small) are often stuck — see actions/meta#76.
+#
+# Setup once: repo Settings → Actions → Runners → Create new runner
+# Then: forgejo-runner register && forgejo-runner daemon
+
 on:
   push:
     branches:
@@ -7,19 +13,16 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: codeberg-small
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Build site
         run: |
-          docker run --rm -v "$PWD:/app" -w /app crystallang/crystal:1.16.3-alpine sh -c "
-            apk add --no-cache git &&
-            shards install &&
-            shards build --release &&
-            ./bin/capsule build
-          "
+          shards install
+          shards build --release
+          ./bin/capsule build
 
       - name: Deploy to Cloudflare Pages
         run: npx wrangler@4 pages deploy public --project-name=website --branch=main

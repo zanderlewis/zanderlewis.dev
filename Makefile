@@ -1,4 +1,4 @@
-.PHONY: install build serve dev clean
+.PHONY: install build serve dev deploy clean
 
 install:
 	shards install
@@ -10,6 +10,9 @@ serve:
 	shards run -- serve
 
 dev: build serve
+
+deploy:
+	./scripts/deploy.sh
 
 binary:
 	shards build
