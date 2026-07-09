@@ -7,7 +7,9 @@
   --text-muted: #8b949e;
   --accent: #58a6ff;
   --accent-dim: #388bfd26;
-  --tip: #3fb950;
+  --active: #3fb950;
+  --archived: #f85149;
+  --tip: #58a6ff;
   --warning: #d29922;
   --note: #58a6ff;
   --radius: 8px;
@@ -198,7 +200,15 @@ body {
 }
 
 .project-capsule.status-beta { border-left: 3px solid var(--warning); }
-.project-capsule.status-active { border-left: 3px solid var(--tip); }
+.project-capsule.status-active { border-left: 3px solid var(--active); }
+.project-capsule.status-archived {
+  border-left: 3px solid var(--archived);
+  opacity: 0.85;
+}
+
+.project-capsule.status-archived .capsule-meta h3 {
+  color: var(--text-muted);
+}
 
 .capsule-meta {
   display: flex;

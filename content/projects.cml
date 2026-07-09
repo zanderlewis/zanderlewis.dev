@@ -6,10 +6,10 @@ title: Projects
 
 Everything I ship in public, in one place. Active repos live on [Codeberg](https://codeberg.org/zanderlewis) first; some may be mirrored on [GitHub](https://github.com/zanderlewis).
 
-## Flagship
+## Active
 
 ::: project { name="ECRL" codeberg="zanderlewis/ecrl" github="zanderlewis/ecrl" status="active" }
-The **Enka-Candler Robotics Language** — a [+crystal] DSL for programming FTC and FRC robots. Canonical repo on Codeberg.
+The **Enka-Candler Robotics Language** — a [+crystal] DSL for programming FTC robots. Canonical repo on Codeberg.
 :::
 
 ::: project { name="Capsule / CML" codeberg="zanderlewis/website" github="zanderlewis/zanderlewis.dev" status="beta" }
@@ -22,18 +22,20 @@ This portfolio's engine. Parses `.cml` files into HTML with code capsules, proje
 Fallout Shelter save editor. [+typescript] frontend, live at zanderlewis.github.io/wasteland.
 :::
 
+## Forks
+
+::: project { name="Carboxyl" github="zanderlewis/carboxyl" status="beta" }
+Chromium running inside your terminal — a fork of carbonyl, written in [+rust].
+:::
+
+## Archived
+
 ::: project { name="Composer RS" github="zanderlewis/composer-rs" status="archived" }
-Rust-native PHP dependency manager. Fast installs, modern UX — a from-scratch take on Composer.
+Experimental AI rewrite of PHP Composer in Rust.
 :::
 
 ::: project { name="Balance News" github="zanderlewis/balance-news" status="archived" }
 News site and aggregator at news.zanderlewis.dev.
-:::
-
-## Experiments & Archives
-
-::: project { name="Carboxyl" github="zanderlewis/carboxyl" status="beta" }
-Chromium running inside your terminal — a fork of carbonyl, written in [+rust].
 :::
 
 ::: project { name="Wakatime Client Remastered" github="zanderlewis/wakatime-client-remastered" status="archived" }
@@ -41,5 +43,5 @@ Maintained revival of the wakatime-client npm package.
 :::
 
 ::: warning
-Some older repos are archived or mirrors of upstream work. Check the README on each repo for current status.
+Archived repos are no longer actively maintained. Check the README on each repo for current status.
 :::
