@@ -4,17 +4,18 @@ title: About
 
 # About
 
-I'm **Zander Lewis** — a 17-year-old software engineer living in **Candler, NC** (he/him). I work with [+crystal], [+rust], [+typescript], [+elixir], and [+linux], and I'm currently involved with **Limelight Robotics**.
+I'm **Zander Lewis** — a 17-year-old software engineer living in **Candler, NC** (he/him). I am learning [+D] and [+Scala], and I use [+linux]. I am currently involved with **Limelight Robotics**.
 
-I like building things that are fast, understandable, and actually shippable: robot control languages, save editors, package managers, and static site tooling like the site you're on now.
+I like building things that are fast, understandable, and actually shippable.
 
 ## Stack
 
-```crystal {title="stack.cr" line-numbers=true highlight=1-3}
-LANGS  = ["Crystal", "Rust", "Elixir"]
-OS     = "Kubuntu 26.04"
-FOCUS  = ["robotics", "developer tools", "open source"]
-VALUES = ["HPC", "determinism", "usefulness"]
+// Line numbers don't currently work
+```crystal {title="stack.cr" line-numbers=false highlight=1-3}
+LEARNING = ["Crystal", "D", "Scala"]
+OS       = "Kubuntu 26.04"
+FOCUS    = ["robotics", "developer tools", "open source"]
+VALUES   = ["HPC", "determinism", "usefulness"]
 ```
 
 ## Experience
@@ -40,7 +41,3 @@ VALUES = ["HPC", "determinism", "usefulness"]
 - [GitHub](https://github.com/zanderlewis) - mirrors and contributions
 - [Codeberg](https://codeberg.org/zanderlewis) - primary git host
 - [zanderlewis.dev](https://zanderlewis.dev) - website
-
-::: note
-Open to collaboration and interesting problems. If you're working on robotics, Crystal, or developer tooling — say hi on either git host.
-:::

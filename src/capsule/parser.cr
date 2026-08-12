@@ -29,6 +29,9 @@ module Capsule
       body = Preprocessor.process_badges(body)
 
       html = Markd.to_html(body, MARKDOWN_OPTIONS)
+
+      html = self.strip_comments(html)
+
       html = inject_fragments(html, "CAPSULE_CODE", code_fragments)
       html = inject_fragments(html, "CAPSULE_BLOCK", block_fragments)
 
@@ -38,6 +41,10 @@ module Capsule
     private def self.process_markdown(text : String) : String
       text = Preprocessor.process_badges(text)
       Markd.to_html(text, MARKDOWN_OPTIONS)
+    end
+
+    private def self.strip_comments(text : String) : String
+      text.gsub(/\/\/ .*/, "")
     end
 
     private def self.inject_fragments(html : String, prefix : String, fragments : Array(String)) : String

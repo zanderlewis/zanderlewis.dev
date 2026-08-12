@@ -12,7 +12,7 @@ module Capsule
         config = Config.load(File.join(root, "capsule.yml"))
         Site.new(config).build(root)
       when "serve"
-        port = (args[1]? || "3000").to_i
+        port = (args[1]? || "4242").to_i
         Server.serve(root, port)
       when "init"
         init_project(root)

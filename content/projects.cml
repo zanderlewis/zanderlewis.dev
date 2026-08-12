@@ -16,32 +16,8 @@ The **Enka-Candler Robotics Language** — a [+crystal] DSL for programming FTC 
 This portfolio's engine. Parses `.cml` files into HTML with code capsules, project cards, timelines, and admonitions — no Node.js pipeline.
 :::
 
-## Shipped
+## Infrequent Updates
 
 ::: project { name="Wasteland" github="zanderlewis/wasteland" url="https://zanderlewis.github.io/wasteland/" status="active" }
 Fallout Shelter save editor. [+typescript] frontend, live at zanderlewis.github.io/wasteland.
-:::
-
-## Forks
-
-::: project { name="Carboxyl" github="zanderlewis/carboxyl" status="beta" }
-Chromium running inside your terminal — a fork of carbonyl, written in [+rust].
-:::
-
-## Archived
-
-::: project { name="Composer RS" github="zanderlewis/composer-rs" status="archived" }
-Experimental AI rewrite of PHP Composer in Rust.
-:::
-
-::: project { name="Balance News" github="zanderlewis/balance-news" status="archived" }
-News site and aggregator at news.zanderlewis.dev.
-:::
-
-::: project { name="Wakatime Client Remastered" github="zanderlewis/wakatime-client-remastered" status="archived" }
-Maintained revival of the wakatime-client npm package.
-:::
-
-::: warning
-Archived repos are no longer actively maintained. Check the README on each repo for current status.
 :::
