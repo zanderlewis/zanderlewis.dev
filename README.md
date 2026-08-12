@@ -8,8 +8,8 @@ Personal site built with [Capsule](https://codeberg.org/zanderlewis/capsule) —
 
 ```bash
 shards install
-make build
-make serve
+just build
+just serve
 ```
 
 See [DEPLOY.md](DEPLOY.md) for Cloudflare Pages setup.

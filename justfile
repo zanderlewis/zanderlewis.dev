@@ -1,4 +1,4 @@
-.PHONY: install build serve dev deploy clean runner-init runner-fix runner-up runner-down runner-logs runner-rm
+# https://just.systems
 
 install:
 	shards install
