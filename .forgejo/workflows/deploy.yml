@@ -1,8 +1,5 @@
 name: Deploy to Cloudflare Pages
 
-# Self-hosted Forgejo runner — see scripts/runner/
-# Uses ubuntu-latest (node:22-bookworm) so actions/checkout has Node available.
-
 on:
   push:
     branches:
@@ -11,7 +8,16 @@ on:
 jobs:
   build-and-deploy:
     runs-on: codeberg-tiny
+    env:
+      TZ: UTC
     steps:
+      - name: Fix timezone
+        run: |
+          if [[ "${TZ:-}" == /* ]]; then
+            export TZ=UTC
+          fi
+          echo "TZ=UTC" >> "${GITHUB_ENV}"
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -57,6 +63,7 @@ jobs:
 
       - name: Install Crystal
         run: |
+          export TZ=UTC
           if command -v crystal >/dev/null && command -v shards >/dev/null; then
             echo "Crystal toolchain restored from cache"
             crystal --version
@@ -71,6 +78,7 @@ jobs:
 
       - name: Build site
         run: |
+          export TZ=UTC
           shards install
           if [[ ! -x bin/capsule ]]; then
             shards build --release
@@ -80,11 +88,13 @@ jobs:
       - name: Ensure Pages project exists
         run: npx wrangler@4 pages project create website --production-branch=main || true
         env:
+          TZ: UTC
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy to Cloudflare Pages
         run: npx wrangler@4 pages deploy public --project-name=website --branch=main
         env:
+          TZ: UTC
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
